@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CubeAnimation">
+        <!-- Button Configuration -->
+        <attr name="enableButton" format="boolean" />
+        <attr name="buttonPosition" format="enum">
+            <enum name="top_start" value="0" />
+            <enum name="top_end" value="1" />
+            <enum name="bottom_start" value="2" />
+            <enum name="bottom_end" value="3" />
+            <enum name="center" value="4" />
+        </attr>
+        <attr name="buttonText" format="string" />
+        <attr name="buttonColor" format="color" />
+        <attr name="buttonTextColor" format="color" />
+
+        <!-- Animation Configuration -->
+        <attr name="autoRotation" format="boolean" />
+        <attr name="rotationInterval" format="integer" />
+        <attr name="animationDuration" format="integer" />
+        <attr name="animationType" format="enum">
+            <enum name="cube" value="0" />
+            <enum name="slide" value="1" />
+            <enum name="fade" value="2" />
+            <enum name="zoom" value="3" />
+        </attr>
+        <attr name="cubeDirection" format="enum">
+            <enum name="left" value="3" />
+            <enum name="right" value="4" />
+            <enum name="up" value="1" />
+            <enum name="down" value="2" />
+        </attr>
+        <attr name="enable3DEffect" format="boolean" />
+
+        <!-- Image Loading Configuration -->
+        <attr name="placeholderImage" format="reference" />
+        <attr name="errorImage" format="reference" />
+        <attr name="enableCache" format="boolean" />
+
+        <!-- Additional Attributes -->
+        <attr name="greetingText" format="string" />
+        <attr name="buttonCornerRadius" format="dimension" />
+        <attr name="buttonElevation" format="dimension" />
+        <attr name="depthValue" format="float" />
+    </declare-styleable>
+</resources>

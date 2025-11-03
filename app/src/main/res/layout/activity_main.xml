@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center">
+<!--
+    <com.Muthuthiruj.cubeanimatingsdk.CubeAnimatingSdk
+        android:id="@+id/cubeSdk"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        app:mainImage="@drawable/godwin"
+        app:nextImage="@drawable/himalayas"
+        app:loginButtonText="Sign In"
+        app:buttonColor="@color/black"
+        app:greetingText="Welcome Back!"
+        app:autoRotateInterval="3000"
+        app:animationDuration="500" />-->
+
+</LinearLayout>
