@@ -1,193 +1,455 @@
-**📦 CubeAnimatingSdk**
+Cube Animation SDK
+A powerful, customizable Android SDK for creating stunning 3D cube animations with images. Perfect for image galleries, onboarding screens, product showcases, and interactive image displays.
 
-A lightweight, powerful Android View component designed to display a sequence of images (Drawables or URLs) with smooth, engaging 3D cube rotation and sliding animations. Perfect for dialogs, product carousels, and interactive headers.
+🚀 Features
+3D Cube Animations - Smooth 3D cube flip transitions
 
-https://github.com/Muthuthiruj/CubeAnimateDynamicImage/commit/db4c04a080dfe50cec6bf42fac6f0c3c05f6cc60
+Dual Control - Both XML attributes and programmatic API
 
-✨ Features
+Auto Rotation - Automatic image cycling with configurable intervals
 
-3D Cube Rotation: Seamless transition between images using a visually appealing 3D cube effect.
+Swipe Gestures - Touch-based navigation between images
 
-Automatic Rotation: Configure speed and direction (including ping-pong mode).
+Customizable Corners - Rounded corners with adjustable radius
 
-Swipe Interaction: Users can manually navigate images via touch gestures.
+Multiple Scale Types - All Android ImageView scale types supported
 
-Image Caching: Efficient memory management for loaded images.
+Image Loading - Support for both drawable resources and URL images
 
-High Customizability: Control animation duration, rotation interval, and image scaling (ScaleType).
+Event Listeners - Comprehensive callback system
 
-Lifecycle Awareness: Easy integration with Android Activity/Fragment lifecycle for stopping and resuming animation.
+Memory Efficient - Optimized with Glide for smooth performance
 
-🚀 Setup
-
-**1. Installation**
-
-This SDK is intended to be used as a library dependency. Replace the placeholder below with your actual dependency coordinates once published to Maven Central or a private repository.
-
-Add the dependency to your module's build.gradle.kts (or build.gradle):
-
-// NOTE: Replace this placeholder link with your actual Git repository reference or Maven coordinates
-implementation 'com.Muthuthiruj:cube-animating-sdk:1.0.0' 
-
-
-**2. XML Layout**
-
-Add the CubeAnimatingSdk to your activity_main.xml (or any layout file). Note the app:cubeSdk ID used for accessing the view in Kotlin.
-
-<com.Muthuthiruj.cubeanimatingsdk.CubeAnimatingSdk
+📦 Installation
+Add Dependency
+gradle
+dependencies {
+    implementation 'com.muthuthiruj:cube-animation-sdk:1.0.0'
+}
+Required Dependencies
+gradle
+dependencies {
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'com.github.bumptech.glide:glide:4.14.2'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
+}
+🎯 Quick Start
+XML Usage
+xml
+<com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk
     android:id="@+id/cubeSdk"
-    android:layout_width="match_parent"
-    android:layout_height="250dp" 
-    android:layout_margin="16dp"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent" />
-
-
-**💻 Usage**
-
-1. Configure and Load Images (MainActivity.kt)
-
-Use the following pattern to load images, configure the animation, and manage the lifecycle. This example uses View Binding, as demonstrated in the code history.
-
-// Ensure you have R.drawable.mountain1, mountain2, etc., defined
-class MainActivity : AppCompatActivity() {
+    android:layout_width="300dp"
+    android:layout_height="300dp"
     
-    private lateinit var binding: ActivityMainBinding
+    <!-- Basic Images -->
+    app:mainImage="@drawable/image1"
+    app:nextImage="@drawable/image2"
+    
+    <!-- Corner Styling -->
+    app:cubeCornerRadius="16dp"
+    
+    <!-- Animation Controls -->
+    app:autoRotateInterval="3000"
+    app:animationDuration="500"
+    app:swipeEnabled="true"
+    app:autoRotate="true"
+    app:loopImages="true"
+    
+    <!-- Scale Type -->
+    app:scaleType="centerCrop"
+    
+    android:background="@android:color/transparent" />
+Programmatic Usage
+kotlin
+class MainActivity : AppCompatActivity() {
     private lateinit var cubeSdk: CubeAnimatingSdk
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root) 
-
-        cubeSdk = binding.cubeSdk 
+        setContentView(R.layout.activity_main)
+        
+        cubeSdk = findViewById(R.id.cubeSdk)
         setupCubeAnimatingSdk()
     }
 
     private fun setupCubeAnimatingSdk() {
-        // Load image resources (list of @DrawableRes Ints)
+        // Load images
         cubeSdk.loadImagesFromResources(listOf(
-            R.drawable.mountain1,
-            R.drawable.mountain2,
-            R.drawable.mountain3,
-            R.drawable.mountain4,
-            R.drawable.mountain5
+            R.drawable.image1, R.drawable.image2, R.drawable.image3
         ))
 
         // Configuration
-        cubeSdk.setRotationInterval(2000) // Rotate every 2 seconds
-        cubeSdk.setAnimationDuration(600) // Animation takes 600ms
+        cubeSdk.setRotationInterval(3000)
+        cubeSdk.setAnimationDuration(500)
         cubeSdk.setSwipeEnabled(true)
-        cubeSdk.setImageScaleType(ImageView.ScaleType.CENTER_CROP)
+        cubeSdk.setImageCaching(true)
         
-        // Start auto rotation immediately
+        // Styling
+        cubeSdk.setImageScaleType(ImageView.ScaleType.CENTER_CROP)
+        cubeSdk.setCornerRadiusInDp(16f)
+        cubeSdk.setImageSetName("Nature Gallery")
+
+        // Event listeners
+        cubeSdk.setOnImageLoadListener { index, image ->
+            Toast.makeText(this, "Image ${index + 1} loaded", Toast.LENGTH_SHORT).show()
+        }
+
+        cubeSdk.setOnAnimationCompleteListener { currentIndex ->
+            Log.d("CubeSDK", "Now showing image: $currentIndex")
+        }
+
+        // Start animation
         cubeSdk.startAutoRotation()
     }
+}
+⚙️ Configuration
+XML Attributes
+Attribute	Type	Default	Description
+mainImage	reference	-	Initial main image
+nextImage	reference	-	Initial next image
+cubeCornerRadius	dimension	0dp	Corner radius for containers
+autoRotateInterval	integer	3000	Auto-rotation interval in ms
+animationDuration	integer	500	Animation duration in ms
+swipeEnabled	boolean	true	Enable/disable swipe gestures
+autoRotate	boolean	true	Enable/disable auto rotation
+loopImages	boolean	true	Loop images continuously
+scaleType	enum	centerCrop	Image scaling behavior
+Scale Types
+center - No scaling, center in view
 
-    // 2. Lifecycle Management (CRITICAL)
-    // Always stop and restart the rotation handler in lifecycle callbacks.
+centerCrop - Scale uniformly, crop if needed
 
-    override fun onResume() {
-        super.onResume()
-        cubeSdk.startAutoRotation() 
-    }
+centerInside - Scale to fit inside, no cropping
 
-    override fun onPause() {
-        super.onPause()
-        cubeSdk.stopAutoRotation()
-    }
+fitCenter - Scale to fit, maintain aspect ratio
+
+fitStart - Scale to fit, align top/left
+
+fitEnd - Scale to fit, align bottom/right
+
+fitXY - Stretch to fill, may distort
+
+matrix - Use image matrix for custom scaling
+
+🔧 Advanced Usage
+Corner Radius Control
+kotlin
+// Set corner radius in dp (recommended)
+cubeSdk.setCornerRadiusInDp(24f)
+
+// Set corner radius in pixels
+cubeSdk.setCornerRadius(72f)
+
+// Remove corners (rectangular)
+cubeSdk.removeCornerRadius()
+
+// Get current corner radius
+val currentRadius = cubeSdk.getCornerRadiusInDp()
+Image Management
+kotlin
+// Load from URLs
+cubeSdk.loadImagesFromUrls(listOf(
+    "https://example.com/image1.jpg",
+    "https://example.com/image2.jpg"
+))
+
+// Add images dynamically
+cubeSdk.addImageResource(R.drawable.new_image)
+cubeSdk.addImageUrl("https://example.com/new_image.jpg")
+
+// Clear all images
+cubeSdk.clearImages()
+
+// Manual navigation
+cubeSdk.next()      // Go to next image
+cubeSdk.previous()  // Go to previous image
+Animation Control
+kotlin
+// Start/stop auto rotation
+cubeSdk.startAutoRotation()
+cubeSdk.stopAutoRotation()
+
+// Configure animation
+cubeSdk.setRotationInterval(5000)  // 5 seconds
+cubeSdk.setAnimationDuration(1000) // 1 second animation
+
+// Enable/disable features
+cubeSdk.setSwipeEnabled(false)
+cubeSdk.setLoopImages(false)
+Event Listeners
+kotlin
+cubeSdk.setOnImageLoadListener { index, image ->
+    // Called when an image is loaded
+    Log.d("CubeSDK", "Image $index loaded: $image")
 }
 
+cubeSdk.setOnImageErrorListener { index, image, error ->
+    // Called when image loading fails
+    Log.e("CubeSDK", "Error loading image $index", error)
+}
 
-**⚙️ Configuration Methods**
+cubeSdk.setOnAnimationCompleteListener { currentIndex ->
+    // Called when animation completes
+    Log.d("CubeSDK", "Animation complete, now showing: $currentIndex")
+}
 
-You can customize the cube's behavior using the following setter methods:
+cubeSdk.setOnSwipeListener { direction ->
+    // Called when user swipes
+    val directionText = if (direction == CubeAnimation.DIRECTION_LEFT) "left" else "right"
+    Log.d("CubeSDK", "User swiped $directionText")
+}
 
-Method
+cubeSdk.setOnImageClickListener { index, currentImage, allImages ->
+    // Called when image is clicked
+    Toast.makeText(this, "Clicked image $index", Toast.LENGTH_SHORT).show()
+}
+🏗️ Architecture
+Key Components
+CubeAnimatingSdk - Main custom view class
 
-Type
+CubeAnimation - Handles 3D animation logic
 
-Default
+CubeAnimationConfig - Configuration data class
 
-Description
+LayoutCubeAnimationBinding - View binding for layout
 
-setRotationInterval(Long)
+Core Architecture Flow
+text
+XML/Programmatic Input
+        ↓
+handleAttributes() ← 🌟 Processes all configurations
+        ↓
+Image Loading (Glide/Resources)
+        ↓
+Gesture Detection & Touch Handling
+        ↓
+Animation System (CubeAnimation)
+        ↓
+State Management & Event Callbacks
+🔍 Deep Dive: handleAttributes Method
+Purpose
+The handleAttributes() method is the core initialization engine that processes all XML attributes and applies them to the SDK configuration. It bridges the gap between XML declarations and runtime behavior.
 
-Long
+Implementation Details
+kotlin
+private fun handleAttributes(attrs: AttributeSet?) {
+    attrs?.let {
+        // Obtain styled attributes from XML
+        val typedArray = context.obtainStyledAttributes(
+            attrs,
+            R.styleable.CubeAnimatingSdk,  // References attrs.xml
+            0,  // Default style attribute
+            0   // Default style resource
+        )
 
-3000
+        try {
+            // 🌟 CORNER RADIUS
+            cornerRadius = typedArray.getDimension(
+                R.styleable.CubeAnimatingSdk_cubeCornerRadius,
+                0f  // Default: no corner radius
+            )
 
-Time (ms) between automatic rotations.
+            // 🌟 IMAGE RESOURCES
+            val mainImageRes = typedArray.getResourceId(
+                R.styleable.CubeAnimatingSdk_mainImage,
+                -1  // Default: no image
+            )
+            val nextImageRes = typedArray.getResourceId(
+                R.styleable.CubeAnimatingSdk_nextImage,
+                -1
+            )
 
-setAnimationDuration(Long)
+            // 🌟 ANIMATION TIMING
+            val autoRotateInterval = typedArray.getInt(
+                R.styleable.CubeAnimatingSdk_autoRotateInterval,
+                3000  // Default: 3 seconds
+            )
+            val animationDuration = typedArray.getInt(
+                R.styleable.CubeAnimatingSdk_animationDuration,
+                500   // Default: 500ms
+            )
 
-Long
+            // 🌟 BEHAVIOR CONTROLS
+            val swipeEnabled = typedArray.getBoolean(
+                R.styleable.CubeAnimatingSdk_swipeEnabled,
+                true  // Default: enabled
+            )
+            val autoRotate = typedArray.getBoolean(
+                R.styleable.CubeAnimatingSdk_autoRotate,
+                true
+            )
+            val loopImages = typedArray.getBoolean(
+                R.styleable.CubeAnimatingSdk_loopImages,
+                true
+            )
 
-500
+            // 🌟 SCALE TYPE MAPPING
+            val scaleTypeIndex = typedArray.getInt(
+                R.styleable.CubeAnimatingSdk_scaleType,
+                1  // Default: CENTER_CROP
+            )
+            val scaleType = when (scaleTypeIndex) {
+                0 -> ImageView.ScaleType.CENTER
+                1 -> ImageView.ScaleType.CENTER_CROP
+                // ... other mappings
+                else -> ImageView.ScaleType.CENTER_CROP
+            }
 
-Duration (ms) of the cube animation/slide effect.
+            // 🌟 APPLY CONFIGURATIONS
+            if (mainImageRes != -1 && nextImageRes != -1) {
+                loadImagesFromResources(listOf(mainImageRes, nextImageRes))
+            }
 
-setSwipeEnabled(Boolean)
+            setRotationInterval(autoRotateInterval.toLong())
+            setAnimationDuration(animationDuration.toLong())
+            setSwipeEnabled(swipeEnabled)
+            config.autoRotate = autoRotate
+            config.loopImages = loopImages
+            setImageScaleType(scaleType)
 
-Boolean
+            Log.d("CubeSDK", "📝 XML attributes applied successfully")
 
-true
+        } finally {
+            // 🌟 CRITICAL: Always recycle typed array
+            typedArray.recycle()
+        }
+    }
+}
+Why handleAttributes is Called First
+kotlin
+private fun initView(attrs: AttributeSet?) {
+    binding = LayoutCubeAnimationBinding.inflate(LayoutInflater.from(context), this, true)
+    
+    // 🌟 MUST BE CALLED FIRST - Processes XML before any initialization
+    handleAttributes(attrs)
+    
+    setupGestureDetector()
+    setupTouchListeners()
+    
+    // Rest of initialization...
+    applyCornerRadius()
+}
+Reasoning:
 
-Allows user to change images via swipe gestures.
+XML Precedence - XML attributes should override default values
 
-setImageCaching(Boolean)
+Early Configuration - Images and timing need to be set before display
 
-Boolean
+Consistent State - Ensures SDK starts in configured state
 
-true
+Performance - Prevents double initialization
 
-Enables in-memory caching for smoother transitions.
+Attribute Processing Order
+Read XML attributes from AttributeSet
 
-setLoopImages(Boolean)
+Extract values with proper type conversion
 
-Boolean
+Apply configurations to internal state
 
-true
+Initialize components with final configuration
 
-If true, looping back from the last image to the first is enabled.
+Start services like auto-rotation
 
-setPingPongMode(Boolean)
+🎨 Customization Examples
+Different Corner Styles
+kotlin
+// Rounded corners (material design)
+cubeSdk.setCornerRadiusInDp(8f)
 
-Boolean
+// Pill-shaped (for square containers)
+cubeSdk.setCornerRadiusInDp(50f)
 
-true
+// Sharp corners (modern look)
+cubeSdk.removeCornerRadius()
+Animation Styles
+kotlin
+// Slow, smooth transitions
+cubeSdk.setAnimationDuration(1000)
+cubeSdk.setRotationInterval(5000)
 
-If true, rotation reverses direction after reaching the end.
+// Fast, dynamic transitions  
+cubeSdk.setAnimationDuration(300)
+cubeSdk.setRotationInterval(2000)
+Responsive Design
+xml
+<!-- Different configurations for different screen sizes -->
 
-setImageScaleType(ImageView.ScaleType)
+<!-- values/dimens.xml (Phones) -->
+<dimen name="cube_corner_radius">16dp</dimen>
+<dimen name="cube_size">300dp</dimen>
 
-ScaleType
+<!-- values-sw600dp/dimens.xml (Tablets) -->
+<dimen name="cube_corner_radius">24dp</dimen>
+<dimen name="cube_size">400dp</dimen>
+🔧 Troubleshooting
+Common Issues
+XML attributes not working
 
-FIT_XY
+Ensure handleAttributes(attrs) is called in initView
 
-Determines how the image fits within the cube face.
+Check attrs.xml for correct attribute definitions
 
-setImageSetName(String)
+Images not loading
 
-String
+Verify image resources exist
 
-null
+Check internet permission for URL images
 
-Optional descriptive name for debugging/logging.
+Review Glide configuration
 
-startAutoRotation()
+Animation performance
 
-Unit
+Reduce image sizes for better performance
 
-N/A
+Use appropriate scale types
 
-Starts the automatic rotation loop.
+Consider enabling image caching
 
-stopAutoRotation()
+Debug Mode
+Enable detailed logging to troubleshoot:
 
-Unit
+kotlin
+// Check current configuration
+val configSummary = cubeSdk.getConfigSummary()
+Log.d("CubeSDK", configSummary)
 
-N/A
+// Monitor animation states
+cubeSdk.setOnAnimationCompleteListener { currentIndex ->
+    Log.d("CubeSDK", "Animation completed → Index: $currentIndex")
+}
+📚 Best Practices
+Performance
+Use appropriately sized images
 
-Stops the rotation loop immediately.
+Enable image caching for URL images
+
+Consider using WebP format for better compression
+
+UX
+Set appropriate auto-rotation intervals (3-5 seconds recommended)
+
+Provide visual feedback for user interactions
+
+Ensure touch targets are adequately sized
+
+Maintenance
+Use dimension resources for consistent styling
+
+Implement proper error handling
+
+Test on various screen sizes and densities
+
+🤝 Contributing
+We welcome contributions! Please see our Contributing Guidelines for details.
+
+📄 License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+🆘 Support
+📧 Email: support@muthuthiruj.com
+
+🐛 Issue Tracker
+
+📖 Documentation
+
+Cube Animation SDK - Transform your image displays with stunning 3D animations! 🎭✨
