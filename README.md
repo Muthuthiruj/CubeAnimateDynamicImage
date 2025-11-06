@@ -1,4 +1,4 @@
-📦 CubeAnimatingSdk
+**📦 CubeAnimatingSdk**
 
 A lightweight, powerful Android View component designed to display a sequence of images (Drawables or URLs) with smooth, engaging 3D cube rotation and sliding animations. Perfect for dialogs, product carousels, and interactive headers.
 
@@ -18,7 +18,7 @@ Lifecycle Awareness: Easy integration with Android Activity/Fragment lifecycle f
 
 🚀 Setup
 
-1. Installation
+**1. Installation**
 
 This SDK is intended to be used as a library dependency. Replace the placeholder below with your actual dependency coordinates once published to Maven Central or a private repository.
 
@@ -28,7 +28,7 @@ Add the dependency to your module's build.gradle.kts (or build.gradle):
 implementation 'com.Muthuthiruj:cube-animating-sdk:1.0.0' 
 
 
-2. XML Layout
+**2. XML Layout**
 
 Add the CubeAnimatingSdk to your activity_main.xml (or any layout file). Note the app:cubeSdk ID used for accessing the view in Kotlin.
 
@@ -42,7 +42,7 @@ Add the CubeAnimatingSdk to your activity_main.xml (or any layout file). Note th
     app:layout_constraintEnd_toEndOf="parent" />
 
 
-💻 Usage
+**💻 Usage**
 
 1. Configure and Load Images (MainActivity.kt)
 
@@ -98,7 +98,7 @@ class MainActivity : AppCompatActivity() {
 }
 
 
-⚙️ Configuration Methods
+**⚙️ Configuration Methods**
 
 You can customize the cube's behavior using the following setter methods:
 
