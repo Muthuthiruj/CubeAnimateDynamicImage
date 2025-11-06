@@ -24,6 +24,9 @@ android {
             )
         }
     }
+    buildFeatures{
+        viewBinding=true
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -41,6 +44,8 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    compileOnly("com.github.bumptech.glide:glide:4.16.0")
 }
 
 publishing {
@@ -48,7 +53,7 @@ publishing {
         create<MavenPublication>("release") {
             groupId = "com.muthuthiruj"
             artifactId = "cube-animation-sdk"
-            version = "1.0.0"
+            version = "1.0.1"
 
             afterEvaluate {
                 from(components["release"])

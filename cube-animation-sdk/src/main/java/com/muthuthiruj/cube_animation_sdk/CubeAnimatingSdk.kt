@@ -1,4 +1,4 @@
-package com.Muthuthiruj.cubeanimatingsdk
+package com.muthuthiruj.cube_animation_sdk
 
 import android.content.Context
 import android.os.Handler
@@ -8,13 +8,12 @@ import android.util.Log
 import android.view.GestureDetector
 import android.view.LayoutInflater
 import android.view.MotionEvent
-import android.view.View
+import android.view.animation.Animation
 import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.annotation.DrawableRes
-import com.Muthuthiruj.cubeanimatingsdk.databinding.LayoutCubeAnimationBinding
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.muthuthiruj.cube_animation_sdk.databinding.LayoutCubeAnimationBinding
 
 class CubeAnimatingSdk @JvmOverloads constructor(
     context: Context,
@@ -24,7 +23,7 @@ class CubeAnimatingSdk @JvmOverloads constructor(
 
     private lateinit var binding: LayoutCubeAnimationBinding
     private lateinit var gestureDetector: GestureDetector
-
+    private var cornerRadius: Float = 0f
     // Image collections
     private val imageUrls = mutableListOf<String>()
     private val imageResources = mutableListOf<Int>()
@@ -83,12 +82,150 @@ class CubeAnimatingSdk @JvmOverloads constructor(
         setupTouchListeners()
 
         // Initialize with first image visibility
-        binding.mainContentContainer.visibility = View.VISIBLE
-        binding.nextContentContainer.visibility = View.INVISIBLE
+        binding.mainContentContainer.visibility = VISIBLE
+        binding.nextContentContainer.visibility = INVISIBLE
 
         // Set scale type for better image display
         binding.mainImageView.scaleType = ImageView.ScaleType.CENTER_CROP
         binding.nextImageView.scaleType = ImageView.ScaleType.CENTER_CROP
+
+        setupGestureDetector()
+        setupTouchListeners()
+
+        handleAttributes(attrs)
+
+        applyCornerRadius()
+    }
+    private fun handleAttributes(attrs: AttributeSet?) {
+        attrs?.let {
+            val typedArray = context.obtainStyledAttributes(
+                attrs,
+                R.styleable.CubeAnimatingSdk,
+                0,
+                0
+            )
+
+            try {
+                // Handle corner radius
+                cornerRadius = typedArray.getDimension(
+                    R.styleable.CubeAnimatingSdk_cubeCornerRadius,
+                    0f
+                )
+
+                // Handle images
+                val mainImageRes = typedArray.getResourceId(
+                    R.styleable.CubeAnimatingSdk_mainImage,
+                    -1
+                )
+                val nextImageRes = typedArray.getResourceId(
+                    R.styleable.CubeAnimatingSdk_nextImage,
+                    -1
+                )
+
+                // Handle animation controls
+                val autoRotateInterval = typedArray.getInt(
+                    R.styleable.CubeAnimatingSdk_autoRotateInterval,
+                    3000
+                )
+                val animationDuration = typedArray.getInt(
+                    R.styleable.CubeAnimatingSdk_animationDuration,
+                    500
+                )
+                val swipeEnabled = typedArray.getBoolean(
+                    R.styleable.CubeAnimatingSdk_swipeEnabled,
+                    true
+                )
+                val autoRotate = typedArray.getBoolean(
+                    R.styleable.CubeAnimatingSdk_autoRotate,
+                    true
+                )
+                val loopImages = typedArray.getBoolean(
+                    R.styleable.CubeAnimatingSdk_loopImages,
+                    true
+                )
+
+                // Handle scale type
+                val scaleTypeIndex = typedArray.getInt(
+                    R.styleable.CubeAnimatingSdk_scaleType,
+                    1 // Default to centerCrop
+                )
+                val scaleType = when (scaleTypeIndex) {
+                    0 -> ImageView.ScaleType.CENTER
+                    1 -> ImageView.ScaleType.CENTER_CROP
+                    2 -> ImageView.ScaleType.CENTER_INSIDE
+                    3 -> ImageView.ScaleType.FIT_CENTER
+                    4 -> ImageView.ScaleType.FIT_START
+                    5 -> ImageView.ScaleType.FIT_END
+                    6 -> ImageView.ScaleType.FIT_XY
+                    7 -> ImageView.ScaleType.MATRIX
+                    else -> ImageView.ScaleType.CENTER_CROP
+                }
+
+                // Apply XML configurations
+                if (mainImageRes != -1 && nextImageRes != -1) {
+                    loadImagesFromResources(listOf(mainImageRes, nextImageRes))
+                }
+
+                setRotationInterval(autoRotateInterval.toLong())
+                setAnimationDuration(animationDuration.toLong())
+                setSwipeEnabled(swipeEnabled)
+                config.autoRotate = autoRotate
+                config.loopImages = loopImages
+                setImageScaleType(scaleType)
+
+                Log.d("CubeSDK", "📝 XML attributes applied - CornerRadius: ${cornerRadius}px")
+
+            } finally {
+                typedArray.recycle()
+            }
+        }
+    }
+
+    // CORNER RADIUS PUBLIC API METHODS
+
+    /**
+     * Set corner radius for both containers in pixels
+     */
+    fun setCornerRadius(radius: Float) {
+        this.cornerRadius = radius
+        applyCornerRadius()
+        Log.d("CubeSDK", "🎨 Corner radius set to: ${radius}px")
+    }
+
+    /**
+     * Set corner radius in density-independent pixels (dp)
+     */
+    fun setCornerRadiusInDp(radiusInDp: Float) {
+        val radiusInPx = radiusInDp * resources.displayMetrics.density
+        setCornerRadius(radiusInPx)
+        Log.d("CubeSDK", "🎨 Corner radius set to: ${radiusInDp}dp (${radiusInPx}px)")
+    }
+
+    /**
+     * Remove corner radius (make containers rectangular)
+     */
+    fun removeCornerRadius() {
+        this.cornerRadius = 0f
+        applyCornerRadius()
+        Log.d("CubeSDK", "🎨 Corner radius removed")
+    }
+
+    /**
+     * Get current corner radius in pixels
+     */
+    fun getCornerRadius(): Float = cornerRadius
+
+    /**
+     * Get current corner radius in density-independent pixels (dp)
+     */
+    fun getCornerRadiusInDp(): Float {
+        return cornerRadius / resources.displayMetrics.density
+    }
+
+    private fun applyCornerRadius() {
+        binding.mainContentContainer.radius = cornerRadius
+        binding.nextContentContainer.radius = cornerRadius
+        Log.d("CubeSDK", "🎨 Applied corner radius: ${cornerRadius}px to both containers")
     }
 
     // Public API Methods
@@ -96,14 +233,7 @@ class CubeAnimatingSdk @JvmOverloads constructor(
     /**
      * Load images from URLs with dynamic loading
      */
-    fun loadImagesFromUrls(urls: List<String>) {
-        imageUrls.clear()
-        imageUrls.addAll(urls)
-        imageResources.clear()
-        currentImageIndex = 0
-        loadCurrentImage()
-        startAutoRotationIfEnabled()
-    }
+
 
     /**
      * Load images from drawable resources
@@ -556,8 +686,8 @@ class CubeAnimatingSdk @JvmOverloads constructor(
         }
 
         // Make next container visible
-        binding.nextContentContainer.visibility = View.VISIBLE
-        binding.nextImageView.visibility = View.VISIBLE
+        binding.nextContentContainer.visibility = VISIBLE
+        binding.nextImageView.visibility = VISIBLE
 
         // Create and initialize animations
         val outAnimation = CubeAnimation.create(direction, false, config.animationDuration)
@@ -576,12 +706,12 @@ class CubeAnimatingSdk @JvmOverloads constructor(
             height
         )
 
-        outAnimation.setAnimationListener(object : android.view.animation.Animation.AnimationListener {
-            override fun onAnimationStart(animation: android.view.animation.Animation) {
+        outAnimation.setAnimationListener(object : Animation.AnimationListener {
+            override fun onAnimationStart(animation: Animation) {
                 Log.d("CubeSDK", "▶️ Animation started")
             }
 
-            override fun onAnimationEnd(animation: android.view.animation.Animation) {
+            override fun onAnimationEnd(animation: Animation) {
                 Log.d("CubeSDK", "⏹️ Animation ended, swapping containers")
 
                 // FIX: Instead of reloading the image, just swap the image drawables
@@ -601,8 +731,8 @@ class CubeAnimatingSdk @JvmOverloads constructor(
 
                 // Alternative approach: Simply make next container the main container
                 // This is more efficient and prevents any blinking
-                binding.mainContentContainer.visibility = View.VISIBLE
-                binding.nextContentContainer.visibility = View.INVISIBLE
+                binding.mainContentContainer.visibility = VISIBLE
+                binding.nextContentContainer.visibility = INVISIBLE
 
                 // Update current index
                 currentImageIndex = newIndex
@@ -617,7 +747,7 @@ class CubeAnimatingSdk @JvmOverloads constructor(
                 restartAutoRotation()
             }
 
-            override fun onAnimationRepeat(animation: android.view.animation.Animation) {}
+            override fun onAnimationRepeat(animation: Animation) {}
         })
 
         // Start animations

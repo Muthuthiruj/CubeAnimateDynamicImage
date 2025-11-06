@@ -1,4 +1,4 @@
-package com.Muthuthiruj.cubeanimatingsdk
+package com.muthuthiruj.cube_animation_sdk
 
 data class CubeAnimationConfig(
     var autoRotate: Boolean = true,

@@ -11,7 +11,7 @@
         android:id="@+id/mainContentContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:cardCornerRadius="20dp"
+        app:cardCornerRadius="0dp"
         app:strokeWidth="0dp"
        app:cardBackgroundColor="@android:color/transparent"
        >
@@ -29,6 +29,7 @@
         android:id="@+id/nextContentContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:cardCornerRadius="0dp"
         app:strokeWidth="0dp"
         app:cardBackgroundColor="@android:color/transparent"
         android:visibility="gone">

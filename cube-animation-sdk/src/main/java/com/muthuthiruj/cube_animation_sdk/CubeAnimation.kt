@@ -1,4 +1,4 @@
-package com.Muthuthiruj.cubeanimatingsdk
+package com.muthuthiruj.cube_animation_sdk
 
 
 import android.view.animation.Transformation

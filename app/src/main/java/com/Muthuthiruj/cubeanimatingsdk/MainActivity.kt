@@ -5,6 +5,7 @@ import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk
 
 class MainActivity : AppCompatActivity() {
     private lateinit var cubeSdk: CubeAnimatingSdk
@@ -30,13 +31,17 @@ class MainActivity : AppCompatActivity() {
 
         // Configuration
         cubeSdk.setRotationInterval(2000) // 3 seconds
-        cubeSdk.setAnimationDuration(600) // 500ms animation
+        cubeSdk.setAnimationDuration(1500) // 500ms animation
         cubeSdk.setSwipeEnabled(true)
         cubeSdk.setImageCaching(true)
         // 🌟 Apply ScaleType and Image Set Name
         cubeSdk.setImageScaleType(ImageView.ScaleType.FIT_XY)
         cubeSdk.setImageSetName("Dialog Images")
 
+
+
+
+        /*cubeSdk.setCornerRadius(40f)*/
 
 
 
@@ -59,6 +64,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+
         // ✅ CRITICAL: Restart auto rotation when returning to the activity
         cubeSdk.startAutoRotation()
     }

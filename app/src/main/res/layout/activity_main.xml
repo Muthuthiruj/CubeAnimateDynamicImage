@@ -14,7 +14,7 @@
     android:background="@android:color/transparent"
     android:elevation="10dp">
 
-    <com.Muthuthiruj.cubeanimatingsdk.CubeAnimatingSdk
+    <com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk
         android:id="@+id/cubeSdk"
         android:layout_gravity="center"
         android:layout_width="match_parent"
@@ -22,6 +22,7 @@
         app:mainImage="@drawable/mountain3"
         app:nextImage="@drawable/mountain4"
         app:loginButtonText="Sign In"
+        app:cubeCornerRadius="1dp"
         android:background="@android:color/transparent"
         app:buttonColor="@color/black"
         app:greetingText="Welcome Back!"

@@ -1,4 +1,4 @@
-package com.Muthuthiruj.cubeanimatingsdk
+package com.muthuthiruj.cube_animation_sdk
 
 fun interface OnImageLoadListener {
     fun onImageLoad(index: Int, image: Any?)
