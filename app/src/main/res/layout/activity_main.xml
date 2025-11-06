@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cubeAnimationContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:gravity="center">
-<!--
+    android:layout_marginTop="10dp"
+    android:layout_marginHorizontal="15dp"
+    android:clickable="true"
+    android:focusable="true"
+    tools:context=".MainActivity"
+    android:focusableInTouchMode="true"
+    android:background="@android:color/transparent"
+    android:elevation="10dp">
+
     <com.Muthuthiruj.cubeanimatingsdk.CubeAnimatingSdk
         android:id="@+id/cubeSdk"
+        android:layout_gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        app:mainImage="@drawable/godwin"
-        app:nextImage="@drawable/himalayas"
+        android:layout_height="wrap_content"
+        app:mainImage="@drawable/mountain3"
+        app:nextImage="@drawable/mountain4"
         app:loginButtonText="Sign In"
+        android:background="@android:color/transparent"
         app:buttonColor="@color/black"
         app:greetingText="Welcome Back!"
         app:autoRotateInterval="3000"
-        app:animationDuration="500" />-->
+        app:animationDuration="500" />
 
-</LinearLayout>
+</FrameLayout>

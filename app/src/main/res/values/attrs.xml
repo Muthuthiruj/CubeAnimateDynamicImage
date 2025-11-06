@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="CubeAnimation">
+    <declare-styleable name="CubeAnimatingSdk">
+        <attr name="loginButtonText" format="string" />
+        <attr name="autoRotateInterval" format="integer" />
+
         <!-- Button Configuration -->
         <attr name="enableButton" format="boolean" />
         <attr name="buttonPosition" format="enum">
@@ -9,38 +12,41 @@
             <enum name="bottom_start" value="2" />
             <enum name="bottom_end" value="3" />
             <enum name="center" value="4" />
+            <enum name="none" value="5" />
         </attr>
         <attr name="buttonText" format="string" />
         <attr name="buttonColor" format="color" />
         <attr name="buttonTextColor" format="color" />
+        <attr name="showButtonOnMain" format="boolean" />
+        <attr name="showButtonOnNext" format="boolean" />
+
+        <!-- Image Configuration -->
+        <attr name="mainImage" format="reference" />
+        <attr name="nextImage" format="reference" />
+        <attr name="placeholderImage" format="reference" />
+        <attr name="errorImage" format="reference" />
+        <attr name="enableImageCache" format="boolean" />
 
         <!-- Animation Configuration -->
         <attr name="autoRotation" format="boolean" />
         <attr name="rotationInterval" format="integer" />
         <attr name="animationDuration" format="integer" />
         <attr name="animationType" format="enum">
-            <enum name="cube" value="0" />
+            <enum name="cube_flip" value="0" />
             <enum name="slide" value="1" />
             <enum name="fade" value="2" />
             <enum name="zoom" value="3" />
+            <enum name="cube_3d" value="4" />
         </attr>
+        <attr name="enable3DEffect" format="boolean" />
         <attr name="cubeDirection" format="enum">
             <enum name="left" value="3" />
             <enum name="right" value="4" />
             <enum name="up" value="1" />
             <enum name="down" value="2" />
         </attr>
-        <attr name="enable3DEffect" format="boolean" />
 
-        <!-- Image Loading Configuration -->
-        <attr name="placeholderImage" format="reference" />
-        <attr name="errorImage" format="reference" />
-        <attr name="enableCache" format="boolean" />
-
-        <!-- Additional Attributes -->
+        <!-- Text Configuration -->
         <attr name="greetingText" format="string" />
-        <attr name="buttonCornerRadius" format="dimension" />
-        <attr name="buttonElevation" format="dimension" />
-        <attr name="depthValue" format="float" />
     </declare-styleable>
 </resources>

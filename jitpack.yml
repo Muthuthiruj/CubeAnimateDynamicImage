@@ -1,0 +1,9 @@
+jdk:
+  - openjdk17
+
+before_install:
+  - chmod +x gradlew
+
+build:
+  commands:
+    - ./gradlew clean :cube-animation-sdk:assembleRelease :cube-animation-sdk:publishToMavenLocal
