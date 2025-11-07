@@ -16,12 +16,41 @@
        app:cardBackgroundColor="@android:color/transparent"
        >
 
-        <ImageView
-            android:id="@+id/mainImageView"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:contentDescription="Cube animation main image" />
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/mainImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:contentDescription="Main image" />
+
+            <!-- Greeting Text for Main Container -->
+            <TextView
+                android:id="@+id/mainGreetingText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:padding="16dp"
+                android:text="Welcome!"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:background="#80000000"
+                android:gravity="center" />
+
+            <!-- Button for Main Container -->
+            <Button
+                android:id="@+id/mainActionButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:text="Action"
+                android:padding="16dp"
+                android:layout_margin="16dp" />
+
+        </RelativeLayout>
 
     </com.google.android.material.card.MaterialCardView>
 
@@ -34,13 +63,41 @@
         app:cardBackgroundColor="@android:color/transparent"
         android:visibility="gone">
 
-        <ImageView
-            android:id="@+id/nextImageView"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:visibility="gone"
-            android:contentDescription="Cube animation next image" />
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/nextImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:contentDescription="Next image" />
+
+            <!-- Greeting Text for Next Container -->
+            <TextView
+                android:id="@+id/nextGreetingText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:padding="16dp"
+                android:text="Welcome!"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:background="#80000000"
+                android:gravity="center" />
+
+            <!-- Button for Next Container -->
+            <Button
+                android:id="@+id/nextActionButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:text="Action"
+                android:padding="16dp"
+                android:layout_margin="16dp" />
+
+        </RelativeLayout>
 
     </com.google.android.material.card.MaterialCardView>
 </FrameLayout>

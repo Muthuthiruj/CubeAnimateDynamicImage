@@ -9,9 +9,9 @@
         <attr name="nextImage" format="reference" />
         <attr name="placeholderImage" format="reference" />
         <attr name="errorImage" format="reference" />
-
-        <!-- Button Configuration -->
         <attr name="loginButtonText" format="string" />
+
+        <!-- ===== BUTTON CONFIGURATION ===== -->
         <attr name="enableButton" format="boolean" />
         <attr name="buttonPosition" format="enum">
             <enum name="top_start" value="0" />
@@ -24,8 +24,47 @@
         <attr name="buttonText" format="string" />
         <attr name="buttonColor" format="color" />
         <attr name="buttonTextColor" format="color" />
+        <attr name="buttonCornerRadius" format="dimension" />
+        <attr name="buttonWidth" format="dimension" />
+        <attr name="buttonHeight" format="dimension" />
+        <attr name="buttonTextSize" format="dimension" />
+        <attr name="buttonTextStyle" format="enum">
+            <enum name="normal" value="0" />
+            <enum name="bold" value="1" />
+            <enum name="italic" value="2" />
+            <enum name="bold_italic" value="3" />
+        </attr>
+        <attr name="buttonPadding" format="dimension" />
         <attr name="showButtonOnMain" format="boolean" />
         <attr name="showButtonOnNext" format="boolean" />
+        <attr name="buttonElevation" format="dimension" />
+
+        <!-- ===== TEXT CONFIGURATION ===== -->
+        <attr name="greetingText" format="string" />
+        <attr name="greetingTextPosition" format="enum">
+            <enum name="top_start" value="0" />
+            <enum name="top_end" value="1" />
+            <enum name="bottom_start" value="2" />
+            <enum name="bottom_end" value="3" />
+            <enum name="center" value="4" />
+            <enum name="none" value="5" />
+        </attr>
+        <attr name="greetingTextColor" format="color" />
+        <attr name="greetingTextSize" format="dimension" />
+        <attr name="greetingTextStyle" format="enum">
+            <enum name="normal" value="0" />
+            <enum name="bold" value="1" />
+            <enum name="italic" value="2" />
+            <enum name="bold_italic" value="3" />
+        </attr>
+        <attr name="greetingBackgroundColor" format="color" />
+        <attr name="greetingPadding" format="dimension" />
+        <attr name="showGreetingOnMain" format="boolean" />
+        <attr name="showGreetingOnNext" format="boolean" />
+
+        <!-- Image-Button Binding -->
+        <attr name="buttonForImageIndex" format="integer" />
+        <attr name="greetingForImageIndex" format="integer" />
 
         <!-- Animation Configuration -->
         <attr name="autoRotate" format="boolean" />
@@ -51,9 +90,6 @@
             <enum name="down" value="2" />
         </attr>
 
-        <!-- Text Configuration -->
-        <attr name="greetingText" format="string" />
-
         <!-- Scale Type -->
         <attr name="scaleType" format="enum">
             <enum name="center" value="0" />
@@ -65,5 +101,11 @@
             <enum name="fitXY" value="6" />
             <enum name="matrix" value="7" />
         </attr>
+
+
+
+
+
+
     </declare-styleable>
 </resources>
