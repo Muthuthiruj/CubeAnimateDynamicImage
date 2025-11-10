@@ -51,8 +51,8 @@ dependencies {
 publishing {
     publications {
         create<MavenPublication>("release") {
-            groupId = "com.muthuthiruj"
-            artifactId = "cube-animation-sdk"
+            groupId = "com.github.Muthuthiruj"
+            artifactId = "CubeAnimationSdk"
             version = "1.0.0"
 
             afterEvaluate {

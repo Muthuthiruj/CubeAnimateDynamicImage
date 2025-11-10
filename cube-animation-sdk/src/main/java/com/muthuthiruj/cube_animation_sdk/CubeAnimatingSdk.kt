@@ -368,6 +368,56 @@ class CubeAnimatingSdk @JvmOverloads constructor(
                     R.styleable.CubeAnimatingSdk_buttonTextColor,
                     context.getColor(android.R.color.white)
                 )
+                buttonConfig.textSize = typedArray.getDimension(
+                    R.styleable.CubeAnimatingSdk_buttonTextSize, 16f
+                )
+
+                // 🌟 BUTTON PADDING ATTRIBUTES
+                buttonConfig.padding = typedArray.getDimensionPixelSize(
+                    R.styleable.CubeAnimatingSdk_buttonPadding, 16
+                )
+                buttonConfig.paddingStart = typedArray.getDimensionPixelSize(
+                    R.styleable.CubeAnimatingSdk_buttonPaddingStart, buttonConfig.padding
+                )
+                buttonConfig.paddingTop = typedArray.getDimensionPixelSize(
+                    R.styleable.CubeAnimatingSdk_buttonPaddingTop, 12
+                )
+                buttonConfig.paddingEnd = typedArray.getDimensionPixelSize(
+                    R.styleable.CubeAnimatingSdk_buttonPaddingEnd, buttonConfig.padding
+                )
+                buttonConfig.paddingBottom = typedArray.getDimensionPixelSize(
+                    R.styleable.CubeAnimatingSdk_buttonPaddingBottom, 12
+                )
+                buttonConfig.paddingHorizontal = typedArray.getDimensionPixelSize(
+                    R.styleable.CubeAnimatingSdk_buttonPaddingHorizontal, buttonConfig.padding
+                )
+                buttonConfig.paddingVertical = typedArray.getDimensionPixelSize(
+                    R.styleable.CubeAnimatingSdk_buttonPaddingVertical, 12
+                )
+
+                // 🌟 BUTTON MARGIN ATTRIBUTES
+                buttonConfig.margin = typedArray.getDimensionPixelSize(
+                    R.styleable.CubeAnimatingSdk_buttonMargin, 8
+                )
+                buttonConfig.marginStart = typedArray.getDimensionPixelSize(
+                    R.styleable.CubeAnimatingSdk_buttonMarginStart, buttonConfig.margin
+                )
+                buttonConfig.marginTop = typedArray.getDimensionPixelSize(
+                    R.styleable.CubeAnimatingSdk_buttonMarginTop, buttonConfig.margin
+                )
+                buttonConfig.marginEnd = typedArray.getDimensionPixelSize(
+                    R.styleable.CubeAnimatingSdk_buttonMarginEnd, buttonConfig.margin
+                )
+                buttonConfig.marginBottom = typedArray.getDimensionPixelSize(
+                    R.styleable.CubeAnimatingSdk_buttonMarginBottom, buttonConfig.margin
+                )
+                buttonConfig.marginHorizontal = typedArray.getDimensionPixelSize(
+                    R.styleable.CubeAnimatingSdk_buttonMarginHorizontal, buttonConfig.margin
+                )
+                buttonConfig.marginVertical = typedArray.getDimensionPixelSize(
+                    R.styleable.CubeAnimatingSdk_buttonMarginVertical, buttonConfig.margin
+                )
+
                 buttonConfig.showOnMain = typedArray.getBoolean(
                     R.styleable.CubeAnimatingSdk_showButtonOnMain, true
                 )
@@ -386,6 +436,53 @@ class CubeAnimatingSdk @JvmOverloads constructor(
                     R.styleable.CubeAnimatingSdk_greetingTextColor,
                     context.getColor(android.R.color.white)
                 )
+
+                // 🌟 GREETING PADDING ATTRIBUTES
+                greetingConfig.padding = typedArray.getDimensionPixelSize(
+                    R.styleable.CubeAnimatingSdk_greetingPadding, 16
+                )
+                greetingConfig.paddingStart = typedArray.getDimensionPixelSize(
+                    R.styleable.CubeAnimatingSdk_greetingPaddingStart, greetingConfig.padding
+                )
+                greetingConfig.paddingTop = typedArray.getDimensionPixelSize(
+                    R.styleable.CubeAnimatingSdk_greetingPaddingTop, 12
+                )
+                greetingConfig.paddingEnd = typedArray.getDimensionPixelSize(
+                    R.styleable.CubeAnimatingSdk_greetingPaddingEnd, greetingConfig.padding
+                )
+                greetingConfig.paddingBottom = typedArray.getDimensionPixelSize(
+                    R.styleable.CubeAnimatingSdk_greetingPaddingBottom, 12
+                )
+                greetingConfig.paddingHorizontal = typedArray.getDimensionPixelSize(
+                    R.styleable.CubeAnimatingSdk_greetingPaddingHorizontal, greetingConfig.padding
+                )
+                greetingConfig.paddingVertical = typedArray.getDimensionPixelSize(
+                    R.styleable.CubeAnimatingSdk_greetingPaddingVertical, 12
+                )
+
+                // 🌟 GREETING MARGIN ATTRIBUTES
+                greetingConfig.margin = typedArray.getDimensionPixelSize(
+                    R.styleable.CubeAnimatingSdk_greetingMargin, 8
+                )
+                greetingConfig.marginStart = typedArray.getDimensionPixelSize(
+                    R.styleable.CubeAnimatingSdk_greetingMarginStart, greetingConfig.margin
+                )
+                greetingConfig.marginTop = typedArray.getDimensionPixelSize(
+                    R.styleable.CubeAnimatingSdk_greetingMarginTop, greetingConfig.margin
+                )
+                greetingConfig.marginEnd = typedArray.getDimensionPixelSize(
+                    R.styleable.CubeAnimatingSdk_greetingMarginEnd, greetingConfig.margin
+                )
+                greetingConfig.marginBottom = typedArray.getDimensionPixelSize(
+                    R.styleable.CubeAnimatingSdk_greetingMarginBottom, greetingConfig.margin
+                )
+                greetingConfig.marginHorizontal = typedArray.getDimensionPixelSize(
+                    R.styleable.CubeAnimatingSdk_greetingMarginHorizontal, greetingConfig.margin
+                )
+                greetingConfig.marginVertical = typedArray.getDimensionPixelSize(
+                    R.styleable.CubeAnimatingSdk_greetingMarginVertical, greetingConfig.margin
+                )
+
                 greetingConfig.showOnMain = typedArray.getBoolean(
                     R.styleable.CubeAnimatingSdk_showGreetingOnMain, true
                 )
@@ -396,6 +493,7 @@ class CubeAnimatingSdk @JvmOverloads constructor(
                 // Apply configurations
                 applyButtonConfigurations()
                 applyGreetingConfigurations()
+
                 // Handle corner radius
                 cornerRadius = typedArray.getDimension(
                     R.styleable.CubeAnimatingSdk_cubeCornerRadius,
@@ -463,9 +561,7 @@ class CubeAnimatingSdk @JvmOverloads constructor(
                 config.loopImages = loopImages
                 setImageScaleType(scaleType)
 
-                Log.d("CubeSDK", "📝 XML attributes applied - CornerRadius: ${cornerRadius}px")
-
-
+                Log.d("CubeSDK", "📝 XML attributes applied - Button padding: ${buttonConfig.padding}, margins: ${buttonConfig.margin}")
 
             } finally {
                 typedArray.recycle()
@@ -518,13 +614,31 @@ class CubeAnimatingSdk @JvmOverloads constructor(
         button.setBackgroundColor(config.backgroundColor)
         button.setTextColor(config.textColor)
         button.textSize = config.textSize
-        button.setPadding(config.padding)
+
+        // 🌟 ENHANCED PADDING HANDLING
+        val paddingStart = if (config.paddingStart != 16) config.paddingStart else config.paddingHorizontal
+        val paddingTop = if (config.paddingTop != 12) config.paddingTop else config.paddingVertical
+        val paddingEnd = if (config.paddingEnd != 16) config.paddingEnd else config.paddingHorizontal
+        val paddingBottom = if (config.paddingBottom != 12) config.paddingBottom else config.paddingVertical
+
+        button.setPadding(paddingStart, paddingTop, paddingEnd, paddingBottom)
 
         val layoutParams = button.layoutParams as? RelativeLayout.LayoutParams
             ?: RelativeLayout.LayoutParams(config.width, config.height)
 
         layoutParams.width = config.width
         layoutParams.height = config.height
+
+        // 🌟 ENHANCED MARGIN HANDLING
+        val marginStart = if (config.marginStart != 8) config.marginStart else config.marginHorizontal
+        val marginTop = if (config.marginTop != 8) config.marginTop else config.marginVertical
+        val marginEnd = if (config.marginEnd != 8) config.marginEnd else config.marginHorizontal
+        val marginBottom = if (config.marginBottom != 8) config.marginBottom else config.marginVertical
+
+        layoutParams.marginStart = marginStart
+        layoutParams.topMargin = marginTop
+        layoutParams.marginEnd = marginEnd
+        layoutParams.bottomMargin = marginBottom
 
         // Clear existing rules
         layoutParams.removeRule(RelativeLayout.ALIGN_PARENT_START)
@@ -578,11 +692,30 @@ class CubeAnimatingSdk @JvmOverloads constructor(
             TextStyle.BOLD_ITALIC -> textView.setTypeface(null, Typeface.BOLD_ITALIC)
         }
 
+        // 🌟 ENHANCED PADDING HANDLING
+        val paddingStart = if (config.paddingStart != 16) config.paddingStart else config.paddingHorizontal
+        val paddingTop = if (config.paddingTop != 12) config.paddingTop else config.paddingVertical
+        val paddingEnd = if (config.paddingEnd != 16) config.paddingEnd else config.paddingHorizontal
+        val paddingBottom = if (config.paddingBottom != 12) config.paddingBottom else config.paddingVertical
+
+        textView.setPadding(paddingStart, paddingTop, paddingEnd, paddingBottom)
+
         val layoutParams = textView.layoutParams as? RelativeLayout.LayoutParams
             ?: RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.WRAP_CONTENT,
                 RelativeLayout.LayoutParams.WRAP_CONTENT
             )
+
+        // 🌟 ENHANCED MARGIN HANDLING
+        val marginStart = if (config.marginStart != 8) config.marginStart else config.marginHorizontal
+        val marginTop = if (config.marginTop != 8) config.marginTop else config.marginVertical
+        val marginEnd = if (config.marginEnd != 8) config.marginEnd else config.marginHorizontal
+        val marginBottom = if (config.marginBottom != 8) config.marginBottom else config.marginVertical
+
+        layoutParams.marginStart = marginStart
+        layoutParams.topMargin = marginTop
+        layoutParams.marginEnd = marginEnd
+        layoutParams.bottomMargin = marginBottom
 
         // Clear existing rules
         layoutParams.removeRule(RelativeLayout.ALIGN_PARENT_START)
@@ -880,6 +1013,7 @@ class CubeAnimatingSdk @JvmOverloads constructor(
             Log.e("CubeSDK", "Error loading current image: ${e.message}")
             onImageErrorListener?.onImageError(currentImageIndex, getCurrentImage(), e)
         }
+
     }
 
     private fun loadImageWithGlide(imageView: ImageView, imageUrl: String) {
@@ -901,6 +1035,7 @@ class CubeAnimatingSdk @JvmOverloads constructor(
     private fun getCurrentImage(): Any? {
         return if (imageUrls.isNotEmpty()) imageUrls.getOrNull(currentImageIndex)
         else imageResources.getOrNull(currentImageIndex)
+
     }
 
     private fun getAllImages(): List<Any> {
@@ -1235,7 +1370,9 @@ class CubeAnimatingSdk @JvmOverloads constructor(
                 restartAutoRotation()
             }
 
-            override fun onAnimationRepeat(animation: Animation) {}
+            override fun onAnimationRepeat(animation: Animation) {
+
+            }
         })
 
         // Start animations

@@ -34,7 +34,7 @@
             <enum name="italic" value="2" />
             <enum name="bold_italic" value="3" />
         </attr>
-        <attr name="buttonPadding" format="dimension" />
+
         <attr name="showButtonOnMain" format="boolean" />
         <attr name="showButtonOnNext" format="boolean" />
         <attr name="buttonElevation" format="dimension" />
@@ -58,7 +58,7 @@
             <enum name="bold_italic" value="3" />
         </attr>
         <attr name="greetingBackgroundColor" format="color" />
-        <attr name="greetingPadding" format="dimension" />
+
         <attr name="showGreetingOnMain" format="boolean" />
         <attr name="showGreetingOnNext" format="boolean" />
 
@@ -101,7 +101,41 @@
             <enum name="fitXY" value="6" />
             <enum name="matrix" value="7" />
         </attr>
+        <!-- Button Padding Attributes -->
+        <attr name="buttonPadding" format="dimension" />
+        <attr name="buttonPaddingStart" format="dimension" />
+        <attr name="buttonPaddingTop" format="dimension" />
+        <attr name="buttonPaddingEnd" format="dimension" />
+        <attr name="buttonPaddingBottom" format="dimension" />
+        <attr name="buttonPaddingHorizontal" format="dimension" />
+        <attr name="buttonPaddingVertical" format="dimension" />
 
+        <!-- Button Margin Attributes -->
+        <attr name="buttonMargin" format="dimension" />
+        <attr name="buttonMarginStart" format="dimension" />
+        <attr name="buttonMarginTop" format="dimension" />
+        <attr name="buttonMarginEnd" format="dimension" />
+        <attr name="buttonMarginBottom" format="dimension" />
+        <attr name="buttonMarginHorizontal" format="dimension" />
+        <attr name="buttonMarginVertical" format="dimension" />
+
+        <!-- Greeting Padding Attributes -->
+        <attr name="greetingPadding" format="dimension" />
+        <attr name="greetingPaddingStart" format="dimension" />
+        <attr name="greetingPaddingTop" format="dimension" />
+        <attr name="greetingPaddingEnd" format="dimension" />
+        <attr name="greetingPaddingBottom" format="dimension" />
+        <attr name="greetingPaddingHorizontal" format="dimension" />
+        <attr name="greetingPaddingVertical" format="dimension" />
+
+        <!-- Greeting Margin Attributes -->
+        <attr name="greetingMargin" format="dimension" />
+        <attr name="greetingMarginStart" format="dimension" />
+        <attr name="greetingMarginTop" format="dimension" />
+        <attr name="greetingMarginEnd" format="dimension" />
+        <attr name="greetingMarginBottom" format="dimension" />
+        <attr name="greetingMarginHorizontal" format="dimension" />
+        <attr name="greetingMarginVertical" format="dimension" />
 
 
 

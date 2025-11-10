@@ -46,7 +46,8 @@ class MainActivity : AppCompatActivity() {
         cubeSdk.setImageCaching(true)
         cubeSdk.setImageScaleType(ImageView.ScaleType.FIT_XY)
         cubeSdk.setImageSetName("Mountain Images")
-        cubeSdk.setCornerRadius(0f)
+        /*cubeSdk.setCornerRadius(20f)*/
+
 
         // ✅ Step 3: Configure UI elements (Buttons & Text)
         setupUIElements()
@@ -70,10 +71,12 @@ class MainActivity : AppCompatActivity() {
             position = CubeAnimatingSdk.ButtonPosition.BOTTOM_END
             text = "Get Started"
             backgroundColor = ContextCompat.getColor(this@MainActivity, R.color.white)
-            textColor = ContextCompat.getColor(this@MainActivity, R.color.white)
+            textColor = ContextCompat.getColor(this@MainActivity, R.color.black)
             textSize = 16f
+
             cornerRadius = 12f
-            padding = 20
+            marginEnd=60
+            marginBottom=60
             width = RelativeLayout.LayoutParams.WRAP_CONTENT
             height = RelativeLayout.LayoutParams.WRAP_CONTENT
             visibilityMode = CubeAnimatingSdk.ButtonVisibility.ON_SPECIFIC_INDICES
@@ -93,8 +96,8 @@ class MainActivity : AppCompatActivity() {
             position = CubeAnimatingSdk.GreetingPosition.TOP_START
             backgroundColor = Color.parseColor("#80000000")
             padding = 16
-            marginTop=10
-            marginStart=10
+            marginTop=40
+            marginStart=40
             showOnMain = true
             showOnNext = true
         }

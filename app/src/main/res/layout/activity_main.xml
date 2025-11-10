@@ -22,11 +22,13 @@
         app:mainImage="@drawable/mountain3"
         app:nextImage="@drawable/mountain4"
         app:loginButtonText="Sign In"
-        app:cubeCornerRadius="1dp"
+        app:cubeCornerRadius="20dp"
         android:background="@android:color/transparent"
         app:buttonColor="@color/black"
         app:greetingText="Welcome Back!"
         app:autoRotateInterval="3000"
+        app:greetingMarginTop="10dp"
+        app:greetingMarginStart="10dp"
         app:animationDuration="500" />
 
 </FrameLayout>
