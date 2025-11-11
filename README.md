@@ -1,4 +1,4 @@
-#**Cube Animation SDK**
+#Cube Animation SDK
 A powerful, customizable Android SDK for creating stunning 3D cube animations with images. Perfect for image galleries, onboarding screens, product showcases, and interactive image displays.
 
 #🚀 **Features**
