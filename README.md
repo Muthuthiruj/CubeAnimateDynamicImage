@@ -267,17 +267,26 @@ app:cubeCornerRadius="20dp"
 <!-- Image Scaling -->
 app:scaleType="centerCrop"
 
-Button Attributes
+**Button Attributes**
 xml
+<!-- Enable/Disable Button -->
 app:enableButton="true"
+
+<!-- Button Text -->
 app:buttonText="Action"
+
+<!-- Button Styling -->
 app:buttonColor="@color/blue"
 app:buttonTextColor="@color/white"
-app:buttonPosition="bottom_end"
-app:buttonTextSize="16sp"
 app:buttonCornerRadius="8dp"
 
-Greeting Text Attributes
+<!-- Button Text Size -->
+app:buttonTextSize="16sp"
+
+<!-- Button Position -->
+app:buttonPosition="bottom_end"
+
+**Greeting Text Attributes**
 xml
 app:greetingText="Welcome!"
 app:greetingTextColor="@color/white"
