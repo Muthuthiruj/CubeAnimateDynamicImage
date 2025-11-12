@@ -252,11 +252,19 @@ setOnSwipeListener	Called when swipe gesture is detected
 📋XML Attributes
 ---
 Basic Attributes
-xml
+<!-- Auto Rotation -->
 app:autoRotateInterval="3000"
+
+<!-- Animation Speed -->
 app:animationDuration="500"
+
+<!-- Swipe Gestures -->
 app:swipeEnabled="true"
+
+<!-- Container Styling -->
 app:cubeCornerRadius="20dp"
+
+<!-- Image Scaling -->
 app:scaleType="centerCrop"
 
 Button Attributes
