@@ -4,7 +4,7 @@ A powerful and customizable Android SDK for creating stunning 3D cube animation 
 
 🚀 What’s New in v1.0.11
 ------------
-v1.0.11: Added dynamic per-image greeting texts with XML support, improved animation sync, and better button/text coordination. 🚀
+v1.0.11: Added dynamic per-image greeting texts with XML support, improved animation synchronization, and better button/text coordination.
 ------------
 
 ✨ **Features**
