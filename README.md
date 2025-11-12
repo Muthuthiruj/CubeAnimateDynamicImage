@@ -1,8 +1,8 @@
-#🎯Cube Animation SDK
+🎯Cube Animation SDK
 ---
 A powerful and customizable Android SDK for creating stunning 3D cube animation effects with images, buttons, and text overlays. Perfect for onboarding screens, image galleries, and interactive content displays.
 
-##✨ **Features**
+✨ **Features**
 ---
 3D Cube Animations - Smooth left/right cube flip transitions
 
@@ -16,18 +16,21 @@ Fully Customizable - Colors, positions, sizes, and animations
 
 Image Support - Load from resources or URLs (with Glide)
 
-Event Listeners - Comprehensive callback system.
+Event Listeners - Comprehensive callback system
+
+🚀Quick Start
 ---
-###🚀** Quick Start**
+1. Add Dependency
 ---
-**1. Add Dependency**
 Add the SDK to your build.gradle:
+gradle
+dependencies {
+    implementation("com.github.Muthuthiruj:CubeAnimateDynamicImage:v1.0.0")
+}
 
-kotlin
-implementation 'com.muthuthiruj:cube-animation-sdk:1.0.0'
-
-**2. Add to Layout**
-XML Configuration:
+2. Add to Layout
+---
+**XML Configuration:**
 
 xml
 <com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk
@@ -61,9 +64,9 @@ xml
     app:greetingTextForIndex4="❤️ Find Your Perfect Escape" />
 
     3. Initialize in Code
-Kotlin:
+    ---
+**Kotlin:**
 
-kotlin
 class MainActivity : AppCompatActivity() {
     private lateinit var cubeSdk: CubeAnimatingSdk
 
@@ -169,9 +172,10 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
-####🎨**Customization Options**
+🎨Customization Options
 ---
-**Button Configuration**
+Button Configuration
+---
 kotlin
 val buttonConfig = CubeAnimatingSdk.ButtonConfig().apply {
     enabled = true
@@ -187,6 +191,7 @@ val buttonConfig = CubeAnimatingSdk.ButtonConfig().apply {
 }
 
 **Greeting Configuration**
+---
 kotlin
 val greetingConfig = CubeAnimatingSdk.GreetingConfig().apply {
     text = "Welcome!"
@@ -201,8 +206,10 @@ val greetingConfig = CubeAnimatingSdk.GreetingConfig().apply {
     showOnNext = true
 }
 
-🔧 **API Reference**
-**Core Methods**
+🔧 API Reference
+---
+Core Methods
+---
 Method	Description
 loadImagesFromResources(resources: List<Int>)	Load images from drawable resources
 loadImagesFromUrls(urls: List<String>)	Load images from URLs
@@ -213,7 +220,8 @@ stopAutoRotation()	Stop automatic slideshow
 next()	Manually go to next image
 previous()	Manually go to previous image
 
-**Configuration Methods**
+Configuration Methods
+---
 Method	Description
 setRotationInterval(interval: Long)	Set auto-rotation interval (ms)
 setAnimationDuration(duration: Long)	Set animation duration (ms)
@@ -221,7 +229,8 @@ setSwipeEnabled(enabled: Boolean)	Enable/disable swipe gestures
 setImageScaleType(scaleType: ImageView.ScaleType)	Set image scale type
 setCornerRadius(radius: Float)	Set container corner radius
 
-**UI Customization**
+UI Customization
+---
 Method	Description
 setButtonConfig(config: ButtonConfig)	Configure button appearance
 setGreetingConfig(config: GreetingConfig)	Configure greeting text
@@ -230,7 +239,8 @@ setGreetingOnIndices(vararg indices: Int)	Show greeting on specific image indice
 setGreetingTextForIndex(index: Int, text: String)	Set different text for specific image
 setGreetingTexts(texts: Map<Int, String>)	Set multiple texts at once
 
-**Event Listeners**
+Event Listeners
+---
 Listener	Description
 setOnButtonClickListener	Called when button is clicked
 setOnImageLoadListener	Called when image loads
@@ -238,7 +248,7 @@ setOnAnimationCompleteListener	Called when animation completes
 setOnImageClickListener	Called when image is tapped
 setOnSwipeListener	Called when swipe gesture is detected
 
-#####📋** XML Attributes**
+📋XML Attributes
 ---
 Basic Attributes
 xml
@@ -273,7 +283,7 @@ app:greetingTextForIndex2="Text for image 2"
 app:greetingTextForIndex3="Text for image 3"
 app:greetingTextForIndex4="Text for image 4"
 
-######🎯 **Use Cases**
+🎯 Use Cases
 ---
 Onboarding Screens
 kotlin
@@ -296,7 +306,7 @@ cubeSdk.setOnButtonClickListener { index, image ->
     }
 }
 
-###🔄 Lifecycle Management
+🔄 Lifecycle Management
 ---
 kotlin
 override fun onResume() {
@@ -314,7 +324,7 @@ override fun onDestroy() {
     // Clean up resources
 }
 
-#######🐛Troubleshooting
+🐛Troubleshooting
 ---
 Common Issues
 Images not loading
@@ -341,14 +351,14 @@ Adjust setAnimationDuration() for smoother transitions
 
 Check memory usage for large image sets
 
-**Logging**
+Logging
 Enable debug logging to track SDK operations:
 
 kotlin
 // Check Logcat for "CubeSDK" tags
 Log.d("CubeSDK", "Debug information")
 
-########📄 License
+📄 License
 ---
 text
 Copyright 2024 Cube Animation SDK
