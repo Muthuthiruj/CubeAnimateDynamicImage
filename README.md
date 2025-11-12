@@ -1,7 +1,9 @@
-🎯 **Cube Animation SDK**
-A powerful and customizable Android SDK for creating stunning 3D cube animation effects with images, buttons, and text overlays. Perfect for onboarding screens, image galleries, and interactive content displays.
+#🎯Cube Animation SDK
 ---
-✨ **Features**
+A powerful and customizable Android SDK for creating stunning 3D cube animation effects with images, buttons, and text overlays. Perfect for onboarding screens, image galleries, and interactive content displays.
+
+##✨ **Features**
+---
 3D Cube Animations - Smooth left/right cube flip transitions
 
 Dynamic Content - Different text and buttons for each image
@@ -16,7 +18,8 @@ Image Support - Load from resources or URLs (with Glide)
 
 Event Listeners - Comprehensive callback system.
 ---
-🚀** Quick Start**
+###🚀** Quick Start**
+---
 **1. Add Dependency**
 Add the SDK to your build.gradle:
 
@@ -166,7 +169,8 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
-🎨** Customization Options**
+####🎨**Customization Options**
+---
 **Button Configuration**
 kotlin
 val buttonConfig = CubeAnimatingSdk.ButtonConfig().apply {
@@ -234,7 +238,8 @@ setOnAnimationCompleteListener	Called when animation completes
 setOnImageClickListener	Called when image is tapped
 setOnSwipeListener	Called when swipe gesture is detected
 
-📋** XML Attributes**
+#####📋** XML Attributes**
+---
 Basic Attributes
 xml
 app:autoRotateInterval="3000"
@@ -268,7 +273,8 @@ app:greetingTextForIndex2="Text for image 2"
 app:greetingTextForIndex3="Text for image 3"
 app:greetingTextForIndex4="Text for image 4"
 
-🎯 **Use Cases**
+######🎯 **Use Cases**
+---
 Onboarding Screens
 kotlin
 // Different messages for each onboarding step
@@ -290,7 +296,8 @@ cubeSdk.setOnButtonClickListener { index, image ->
     }
 }
 
-🔄 Lifecycle Management
+###🔄 Lifecycle Management
+---
 kotlin
 override fun onResume() {
     super.onResume()
@@ -307,7 +314,8 @@ override fun onDestroy() {
     // Clean up resources
 }
 
-🐛 **Troubleshooting**
+#######🐛Troubleshooting
+---
 Common Issues
 Images not loading
 
@@ -340,7 +348,8 @@ kotlin
 // Check Logcat for "CubeSDK" tags
 Log.d("CubeSDK", "Debug information")
 
-📄 License
+########📄 License
+---
 text
 Copyright 2024 Cube Animation SDK
 
