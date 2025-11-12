@@ -53,7 +53,7 @@ publishing {
         create<MavenPublication>("release") {
             groupId = "com.github.Muthuthiruj"
             artifactId = "CubeAnimationSdk"
-            version = "1.0.0"
+            version = "1.0.11"
 
             afterEvaluate {
                 from(components["release"])

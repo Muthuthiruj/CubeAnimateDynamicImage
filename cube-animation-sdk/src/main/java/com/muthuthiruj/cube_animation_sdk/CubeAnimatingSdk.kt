@@ -36,6 +36,8 @@ class CubeAnimatingSdk @JvmOverloads constructor(
     // Image collections
     private val imageUrls = mutableListOf<String>()
     private val imageResources = mutableListOf<Int>()
+    // 🌟 Add this property to store different greeting texts for different indices
+    private val greetingTexts = mutableMapOf<Int, String>()
 
     // Configuration
     private var config = CubeAnimationConfig()
@@ -429,6 +431,21 @@ class CubeAnimatingSdk @JvmOverloads constructor(
                 greetingConfig.text = typedArray.getString(
                     R.styleable.CubeAnimatingSdk_greetingText
                 ) ?: "Welcome!"
+
+                // 🌟 NEW: Handle different greeting texts for different indices
+                val greetingText0 = typedArray.getString(R.styleable.CubeAnimatingSdk_greetingTextForIndex0)
+                val greetingText1 = typedArray.getString(R.styleable.CubeAnimatingSdk_greetingTextForIndex1)
+                val greetingText2 = typedArray.getString(R.styleable.CubeAnimatingSdk_greetingTextForIndex2)
+                val greetingText3 = typedArray.getString(R.styleable.CubeAnimatingSdk_greetingTextForIndex3)
+                val greetingText4 = typedArray.getString(R.styleable.CubeAnimatingSdk_greetingTextForIndex4)
+
+                // Set custom greeting texts if provided
+                greetingText0?.let { setGreetingTextForIndex(0, it) }
+                greetingText1?.let { setGreetingTextForIndex(1, it) }
+                greetingText2?.let { setGreetingTextForIndex(2, it) }
+                greetingText3?.let { setGreetingTextForIndex(3, it) }
+                greetingText4?.let { setGreetingTextForIndex(4, it) }
+
                 greetingConfig.textSize = typedArray.getDimension(
                     R.styleable.CubeAnimatingSdk_greetingTextSize, 18f
                 )
@@ -561,7 +578,7 @@ class CubeAnimatingSdk @JvmOverloads constructor(
                 config.loopImages = loopImages
                 setImageScaleType(scaleType)
 
-                Log.d("CubeSDK", "📝 XML attributes applied - Button padding: ${buttonConfig.padding}, margins: ${buttonConfig.margin}")
+                Log.d("CubeSDK", "📝 XML attributes applied - Custom greeting texts: ${greetingTexts.size}")
 
             } finally {
                 typedArray.recycle()
@@ -597,6 +614,20 @@ class CubeAnimatingSdk @JvmOverloads constructor(
     fun setGreetingConfig(config: GreetingConfig) {
         this.greetingConfig = config
         applyGreetingConfigurations()
+        updateButtonAndTextVisibility()
+    }
+
+    fun setGreetingTextForIndex(index: Int, text: String) {
+        greetingTexts[index] = text
+        updateButtonAndTextVisibility()
+    }
+
+    /**
+     * Set multiple greeting texts at once
+     */
+    fun setGreetingTexts(texts: Map<Int, String>) {
+        greetingTexts.clear()
+        greetingTexts.putAll(texts)
         updateButtonAndTextVisibility()
     }
 
@@ -792,11 +823,17 @@ class CubeAnimatingSdk @JvmOverloads constructor(
                 (greetingOnIndices.isEmpty() || greetingOnIndices.contains(currentImageIndex))
 
         binding.mainGreetingText.visibility = if (shouldShowGreeting) VISIBLE else INVISIBLE
+
+        // 🌟 Update greeting text based on current index
+        if (shouldShowGreeting) {
+            val customText = greetingTexts[currentImageIndex]
+            binding.mainGreetingText.text = customText ?: greetingConfig.text
+        }
     }
 
     private fun updateNextButtonAndTextVisibility() {
         val nextIndex = if (currentImageIndex < getImageCount() - 1) currentImageIndex + 1 else 0
-
+        updateNextButtonAndTextVisibilityForIndex(nextIndex)
         // Button visibility for next container
         val shouldShowButton = when (buttonConfig.visibilityMode) {
             ButtonVisibility.ALWAYS -> buttonConfig.enabled && buttonConfig.showOnNext
@@ -1002,18 +1039,20 @@ class CubeAnimatingSdk @JvmOverloads constructor(
 
         try {
             if (imageUrls.isNotEmpty()) {
-                // Load image from URL using Glide into mainImageView
                 loadImageWithGlide(binding.mainImageView, imageUrls[currentImageIndex])
                 onImageLoadListener?.onImageLoad(currentImageIndex, imageUrls[currentImageIndex])
             } else {
                 binding.mainImageView.setImageResource(imageResources[currentImageIndex])
                 onImageLoadListener?.onImageLoad(currentImageIndex, imageResources[currentImageIndex])
             }
+
+            // 🌟 Ensure button and text visibility is updated when image loads
+            updateMainButtonAndTextVisibility()
+
         } catch (e: Exception) {
             Log.e("CubeSDK", "Error loading current image: ${e.message}")
             onImageErrorListener?.onImageError(currentImageIndex, getCurrentImage(), e)
         }
-
     }
 
     private fun loadImageWithGlide(imageView: ImageView, imageUrl: String) {
@@ -1291,7 +1330,9 @@ class CubeAnimatingSdk @JvmOverloads constructor(
         binding.mainContentContainer.clearAnimation()
         binding.nextContentContainer.clearAnimation()
 
-        // Set up the next image in nextImageView - but don't reload in mainImageView later
+
+
+        // Set up the next image in nextImageView
         try {
             if (imageUrls.isNotEmpty()) {
                 loadImageWithGlide(binding.nextImageView, imageUrls[newIndex])
@@ -1302,13 +1343,19 @@ class CubeAnimatingSdk @JvmOverloads constructor(
             Log.e("CubeSDK", "❌ Error loading next image: ${e.message}")
             onImageErrorListener?.onImageError(newIndex, getImageAt(newIndex), e)
             isAnimating = false
-            restartAutoRotation() // Restart auto-rotation even on error
+            restartAutoRotation()
             return
         }
+
+        // 🌟 CRITICAL FIX: Update button and text visibility for NEXT container BEFORE animation starts
+        updateNextButtonAndTextVisibilityForIndex(newIndex)
 
         // Make next container visible
         binding.nextContentContainer.visibility = VISIBLE
         binding.nextImageView.visibility = VISIBLE
+
+        // 🌟 Also ensure main container button/text visibility is correct
+        updateMainButtonAndTextVisibility()
 
         // Create and initialize animations
         val outAnimation = CubeAnimation.create(direction, false, config.animationDuration)
@@ -1335,49 +1382,79 @@ class CubeAnimatingSdk @JvmOverloads constructor(
             override fun onAnimationEnd(animation: Animation) {
                 Log.d("CubeSDK", "⏹️ Animation ended, swapping containers")
 
-                // FIX: Instead of reloading the image, just swap the image drawables
-                // This prevents the blinking/reloading effect
+                // Swap the image drawables between main and next ImageViews
                 if (imageUrls.isNotEmpty()) {
-                    // For URLs, we need to handle differently to avoid reloading
-                    // Just swap the image drawables between main and next ImageViews
                     val mainDrawable = binding.mainImageView.drawable
                     val nextDrawable = binding.nextImageView.drawable
-
                     binding.mainImageView.setImageDrawable(nextDrawable)
                     binding.nextImageView.setImageDrawable(mainDrawable)
                 } else {
-                    // For resources, just update the main image view
                     binding.mainImageView.setImageResource(imageResources[newIndex])
                 }
 
-                // Alternative approach: Simply make next container the main container
-                // This is more efficient and prevents any blinking
+                // Update current index FIRST
+                currentImageIndex = newIndex
+
+                // 🌟 CRITICAL: Update button and text visibility for the NEW current index
+                updateMainButtonAndTextVisibility()
+
                 binding.mainContentContainer.visibility = VISIBLE
                 binding.nextContentContainer.visibility = INVISIBLE
 
-                // Update current index
-                currentImageIndex = newIndex
                 isAnimating = false
-
-                updateButtonAndTextVisibility()
 
                 Log.d("CubeSDK", "✅ Animation complete. Current index: $currentImageIndex, Forward sequence: $isForwardSequence")
 
                 // Notify listener
                 onAnimationCompleteListener?.onAnimationComplete(currentImageIndex)
 
-                // CRITICAL: Restart auto-rotation after animation completes
+                // Restart auto-rotation after animation completes
                 restartAutoRotation()
             }
 
             override fun onAnimationRepeat(animation: Animation) {
-
+                // Not used
             }
         })
 
         // Start animations
         binding.mainContentContainer.startAnimation(outAnimation)
         binding.nextContentContainer.startAnimation(inAnimation)
+    }
+
+    /**
+     * 🌟 Update next container button and text visibility for a specific index
+     * This ensures the next container shows the correct button/text during animation
+     */
+    /**
+     * 🌟 Update next container button and text visibility for a specific index
+     * This ensures the next container shows the correct button/text during animation
+     */
+    private fun updateNextButtonAndTextVisibilityForIndex(index: Int) {
+        // Button visibility for next container
+        val shouldShowButton = when (buttonConfig.visibilityMode) {
+            ButtonVisibility.ALWAYS -> buttonConfig.enabled && buttonConfig.showOnNext
+            ButtonVisibility.ON_FIRST_IMAGE -> buttonConfig.enabled && buttonConfig.showOnNext && index == 0
+            ButtonVisibility.ON_LAST_IMAGE -> buttonConfig.enabled && buttonConfig.showOnNext && index == getImageCount() - 1
+            ButtonVisibility.ON_SPECIFIC_INDICES -> buttonConfig.enabled && buttonConfig.showOnNext && buttonOnIndices.contains(index)
+            ButtonVisibility.NEVER -> false
+        }
+
+        binding.nextActionButton.visibility = if (shouldShowButton) VISIBLE else INVISIBLE
+
+        // Greeting visibility for next container
+        val shouldShowGreeting = greetingConfig.showOnNext &&
+                (greetingOnIndices.isEmpty() || greetingOnIndices.contains(index))
+
+        binding.nextGreetingText.visibility = if (shouldShowGreeting) VISIBLE else INVISIBLE
+
+        // 🌟 Update greeting text based on the specific index
+        if (shouldShowGreeting) {
+            val customText = greetingTexts[index]
+            binding.nextGreetingText.text = customText ?: greetingConfig.text
+        }
+
+        Log.d("CubeSDK", "🔄 Next container visibility for index $index - Button: $shouldShowButton, Greeting: $shouldShowGreeting, Text: ${greetingTexts[index] ?: greetingConfig.text}")
     }
 
     private fun getImageAt(index: Int): Any? {

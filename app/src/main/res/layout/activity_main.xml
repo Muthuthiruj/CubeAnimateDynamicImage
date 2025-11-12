@@ -29,6 +29,11 @@
         app:autoRotateInterval="3000"
         app:greetingMarginTop="10dp"
         app:greetingMarginStart="10dp"
-        app:animationDuration="500" />
+        app:animationDuration="500"
+        app:greetingTextForIndex0="🏔️ Discover Amazing Mountains"
+        app:greetingTextForIndex1="🌄 Explore Natural Beauty"
+        app:greetingTextForIndex2="🚀 Adventure Awaits You"
+        app:greetingTextForIndex3="📸 Capture Memorable Moments"
+        />
 
 </FrameLayout>

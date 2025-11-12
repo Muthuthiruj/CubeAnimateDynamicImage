@@ -48,9 +48,9 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
     implementation(project(":cube-animation-sdk"))
 
+    /*implementation("com.github.Muthuthiruj:CubeAnimateDynamicImage:v1.0.0")*/
     //Glide
     implementation ("com.github.bumptech.glide:glide:4.16.0")
 

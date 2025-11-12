@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
             R.drawable.mountain2,
             R.drawable.mountain3,
             R.drawable.mountain4,
+            R.drawable.mountain4,
             R.drawable.mountain5
         ))
 
@@ -89,7 +90,7 @@ class MainActivity : AppCompatActivity() {
 
         // ===== GREETING CONFIGURATION =====
         val greetingConfig = CubeAnimatingSdk.GreetingConfig().apply {
-            text = "Discover Amazing Content"
+            text = "Default Welcome Text" // This will be used for indices without custom text
             textSize = 18f
             textColor = ContextCompat.getColor(this@MainActivity, R.color.white)
             textStyle = CubeAnimatingSdk.TextStyle.BOLD
@@ -103,7 +104,28 @@ class MainActivity : AppCompatActivity() {
         }
 
         cubeSdk.setGreetingConfig(greetingConfig)
-        cubeSdk.setGreetingOnIndices(0, 1)
+        cubeSdk.setGreetingOnIndices(0, 1, 2, 3, 4, 5) // Show greeting on all images
+
+        // 🌟 SET DIFFERENT TEXTS FOR DIFFERENT IMAGES
+        cubeSdk.setGreetingTextForIndex(0, "🏔️ Discover Amazing Mountains")
+        cubeSdk.setGreetingTextForIndex(1, "🌄 Explore Natural Beauty")
+        cubeSdk.setGreetingTextForIndex(2, "🚀 Adventure Awaits You")
+        cubeSdk.setGreetingTextForIndex(3, "📸 Capture Memorable Moments")
+        cubeSdk.setGreetingTextForIndex(4, "❤️ Find Your Perfect Escape")
+        cubeSdk.setGreetingTextForIndex(5, "❤️ Find Your Perfect Escape")
+
+
+        // Alternative: You can also set all texts at once using a map
+        /*
+        val greetingTexts = mapOf(
+            0 to "🏔️ Discover Amazing Mountains",
+            1 to "🌄 Explore Natural Beauty",
+            2 to "🚀 Adventure Awaits You",
+            3 to "📸 Capture Memorable Moments",
+            4 to "❤️ Find Your Perfect Escape"
+        )
+        cubeSdk.setGreetingTexts(greetingTexts)
+        */
 
         Log.d("CubeSDK", "✅ UI elements configured")
     }

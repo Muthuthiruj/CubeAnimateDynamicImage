@@ -1,0 +1,850 @@
+kotlin version: 2.0.21
+error message: org.jetbrains.kotlin.backend.common.BackendException: Backend Internal error: Exception during IR lowering
+File being compiled: C:/Users/toqsoft/Desktop/CubeAnimatingSDK2/app/src/main/java/com/Muthuthiruj/cubeanimatingsdk/MainActivity.kt
+The root cause java.lang.RuntimeException was thrown at: org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate(FunctionCodegen.kt:47)
+	at org.jetbrains.kotlin.backend.common.CodegenUtil.reportBackendException(CodegenUtil.kt:253)
+	at org.jetbrains.kotlin.backend.common.CodegenUtil.reportBackendException$default(CodegenUtil.kt:236)
+	at org.jetbrains.kotlin.backend.common.phaser.PerformByIrFilePhase.invokeSequential(performByIrFile.kt:65)
+	at org.jetbrains.kotlin.backend.common.phaser.PerformByIrFilePhase.invoke(performByIrFile.kt:52)
+	at org.jetbrains.kotlin.backend.common.phaser.PerformByIrFilePhase.invoke(performByIrFile.kt:38)
+	at org.jetbrains.kotlin.backend.common.phaser.NamedCompilerPhase.phaseBody(CompilerPhase.kt:166)
+	at org.jetbrains.kotlin.backend.common.phaser.AbstractNamedCompilerPhase.invoke(CompilerPhase.kt:113)
+	at org.jetbrains.kotlin.backend.common.phaser.CompositePhase.invoke(PhaseBuilders.kt:27)
+	at org.jetbrains.kotlin.backend.common.phaser.CompositePhase.invoke(PhaseBuilders.kt:14)
+	at org.jetbrains.kotlin.backend.common.phaser.NamedCompilerPhase.phaseBody(CompilerPhase.kt:166)
+	at org.jetbrains.kotlin.backend.common.phaser.AbstractNamedCompilerPhase.invoke(CompilerPhase.kt:113)
+	at org.jetbrains.kotlin.backend.common.phaser.CompilerPhaseKt.invokeToplevel(CompilerPhase.kt:62)
+	at org.jetbrains.kotlin.backend.jvm.JvmIrCodegenFactory.invokeCodegen(JvmIrCodegenFactory.kt:371)
+	at org.jetbrains.kotlin.codegen.CodegenFactory.generateModule(CodegenFactory.kt:47)
+	at org.jetbrains.kotlin.backend.jvm.JvmIrCodegenFactory.generateModuleInFrontendIRMode(JvmIrCodegenFactory.kt:433)
+	at org.jetbrains.kotlin.cli.jvm.compiler.pipeline.JvmCompilerPipelineKt.generateCodeFromIr(jvmCompilerPipeline.kt:246)
+	at org.jetbrains.kotlin.cli.jvm.compiler.pipeline.JvmCompilerPipelineKt.compileModulesUsingFrontendIrAndLightTree(jvmCompilerPipeline.kt:142)
+	at org.jetbrains.kotlin.cli.jvm.K2JVMCompiler.doExecute(K2JVMCompiler.kt:148)
+	at org.jetbrains.kotlin.cli.jvm.K2JVMCompiler.doExecute(K2JVMCompiler.kt:43)
+	at org.jetbrains.kotlin.cli.common.CLICompiler.execImpl(CLICompiler.kt:103)
+	at org.jetbrains.kotlin.cli.common.CLICompiler.execImpl(CLICompiler.kt:49)
+	at org.jetbrains.kotlin.cli.common.CLITool.exec(CLITool.kt:101)
+	at org.jetbrains.kotlin.incremental.IncrementalJvmCompilerRunner.runCompiler(IncrementalJvmCompilerRunner.kt:464)
+	at org.jetbrains.kotlin.incremental.IncrementalJvmCompilerRunner.runCompiler(IncrementalJvmCompilerRunner.kt:73)
+	at org.jetbrains.kotlin.incremental.IncrementalCompilerRunner.doCompile(IncrementalCompilerRunner.kt:506)
+	at org.jetbrains.kotlin.incremental.IncrementalCompilerRunner.compileImpl(IncrementalCompilerRunner.kt:423)
+	at org.jetbrains.kotlin.incremental.IncrementalCompilerRunner.tryCompileIncrementally$lambda$9$compile(IncrementalCompilerRunner.kt:249)
+	at org.jetbrains.kotlin.incremental.IncrementalCompilerRunner.tryCompileIncrementally(IncrementalCompilerRunner.kt:267)
+	at org.jetbrains.kotlin.incremental.IncrementalCompilerRunner.compile(IncrementalCompilerRunner.kt:120)
+	at org.jetbrains.kotlin.daemon.CompileServiceImplBase.execIncrementalCompiler(CompileServiceImpl.kt:675)
+	at org.jetbrains.kotlin.daemon.CompileServiceImplBase.access$execIncrementalCompiler(CompileServiceImpl.kt:92)
+	at org.jetbrains.kotlin.daemon.CompileServiceImpl.compile(CompileServiceImpl.kt:1660)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(Unknown Source)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Unknown Source)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Unknown Source)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(Unknown Source)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(Unknown Source)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.RuntimeException: Exception while generating code for:
+FUN name:setupCubeAnimatingSdk visibility:private modality:FINAL <> ($this:com.Muthuthiruj.cubeanimatingsdk.MainActivity) returnType:kotlin.Unit
+  $this: VALUE_PARAMETER name:<this> type:com.Muthuthiruj.cubeanimatingsdk.MainActivity
+  BLOCK_BODY
+    CALL 'public final fun loadImagesFromResources (resources: kotlin.collections.List<kotlin.Int>): kotlin.Unit declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk' type=kotlin.Unit origin=null
+      $this: BLOCK type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk origin=FOLDED_ELVIS
+        WHEN type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk origin=FOLDED_ELVIS
+          BRANCH
+            if: COMPOSITE type=kotlin.Boolean origin=null
+              VAR IR_TEMPORARY_VARIABLE name:tmp0 type:com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val]
+                GET_FIELD 'FIELD PROPERTY_BACKING_FIELD name:cubeSdk type:com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? visibility:private' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+                  receiver: GET_VAR '<this>: com.Muthuthiruj.cubeanimatingsdk.MainActivity declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity origin=null
+              CALL 'public final fun not (): kotlin.Boolean [operator] declared in kotlin.Boolean' type=kotlin.Boolean origin=null
+                $this: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=null
+                  arg0: GET_VAR 'val tmp0: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+                  arg1: CONST Null type=kotlin.Nothing? value=null
+            then: GET_VAR 'val tmp0: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+          BRANCH
+            if: CONST Boolean type=kotlin.Boolean value=true
+            then: BLOCK type=kotlin.Unit origin=null
+              CALL 'public final fun throwUninitializedPropertyAccessException (propertyName: kotlin.String): kotlin.Unit declared in kotlin.jvm.internal.Intrinsics' type=kotlin.Unit origin=null
+                propertyName: CONST String type=kotlin.String value="cubeSdk"
+      resources: CALL 'public final fun listOf <T> (vararg elements: T of kotlin.collections.CollectionsKt.listOf): kotlin.collections.List<T of kotlin.collections.CollectionsKt.listOf> declared in kotlin.collections.CollectionsKt' type=kotlin.collections.List<kotlin.Int> origin=null
+        <T>: kotlin.Int
+        elements: BLOCK type=kotlin.Array<out kotlin.Int> origin=null
+          VAR IR_TEMPORARY_VARIABLE name:tmp0 type:kotlin.Array<out kotlin.Int> [val]
+            CALL 'public final fun arrayOfNulls <T> (size: kotlin.Int): kotlin.Array<T of kotlin.arrayOfNulls?> declared in kotlin' type=kotlin.Array<out kotlin.Int> origin=null
+              <T>: kotlin.Int
+              size: CONST Int type=kotlin.Int value=5
+          CALL 'public final fun set (index: kotlin.Int, value: T of kotlin.Array): kotlin.Unit [operator] declared in kotlin.Array' type=kotlin.Unit origin=null
+            $this: GET_VAR 'val tmp0: kotlin.Array<out kotlin.Int> [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=kotlin.Array<out kotlin.Int> origin=null
+            index: CONST Int type=kotlin.Int value=0
+            value: GET_FIELD 'FIELD IR_EXTERNAL_JAVA_DECLARATION_STUB name:mountain1 type:kotlin.Int visibility:public [static] declared in com.Muthuthiruj.cubeanimatingsdk.R.drawable' type=kotlin.Int superQualifierSymbol=com.Muthuthiruj.cubeanimatingsdk.R.drawable origin=null
+          CALL 'public final fun set (index: kotlin.Int, value: T of kotlin.Array): kotlin.Unit [operator] declared in kotlin.Array' type=kotlin.Unit origin=null
+            $this: GET_VAR 'val tmp0: kotlin.Array<out kotlin.Int> [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=kotlin.Array<out kotlin.Int> origin=null
+            index: CONST Int type=kotlin.Int value=1
+            value: GET_FIELD 'FIELD IR_EXTERNAL_JAVA_DECLARATION_STUB name:mountain2 type:kotlin.Int visibility:public [static] declared in com.Muthuthiruj.cubeanimatingsdk.R.drawable' type=kotlin.Int superQualifierSymbol=com.Muthuthiruj.cubeanimatingsdk.R.drawable origin=null
+          CALL 'public final fun set (index: kotlin.Int, value: T of kotlin.Array): kotlin.Unit [operator] declared in kotlin.Array' type=kotlin.Unit origin=null
+            $this: GET_VAR 'val tmp0: kotlin.Array<out kotlin.Int> [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=kotlin.Array<out kotlin.Int> origin=null
+            index: CONST Int type=kotlin.Int value=2
+            value: GET_FIELD 'FIELD IR_EXTERNAL_JAVA_DECLARATION_STUB name:mountain3 type:kotlin.Int visibility:public [static] declared in com.Muthuthiruj.cubeanimatingsdk.R.drawable' type=kotlin.Int superQualifierSymbol=com.Muthuthiruj.cubeanimatingsdk.R.drawable origin=null
+          CALL 'public final fun set (index: kotlin.Int, value: T of kotlin.Array): kotlin.Unit [operator] declared in kotlin.Array' type=kotlin.Unit origin=null
+            $this: GET_VAR 'val tmp0: kotlin.Array<out kotlin.Int> [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=kotlin.Array<out kotlin.Int> origin=null
+            index: CONST Int type=kotlin.Int value=3
+            value: GET_FIELD 'FIELD IR_EXTERNAL_JAVA_DECLARATION_STUB name:mountain4 type:kotlin.Int visibility:public [static] declared in com.Muthuthiruj.cubeanimatingsdk.R.drawable' type=kotlin.Int superQualifierSymbol=com.Muthuthiruj.cubeanimatingsdk.R.drawable origin=null
+          CALL 'public final fun set (index: kotlin.Int, value: T of kotlin.Array): kotlin.Unit [operator] declared in kotlin.Array' type=kotlin.Unit origin=null
+            $this: GET_VAR 'val tmp0: kotlin.Array<out kotlin.Int> [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=kotlin.Array<out kotlin.Int> origin=null
+            index: CONST Int type=kotlin.Int value=4
+            value: GET_FIELD 'FIELD IR_EXTERNAL_JAVA_DECLARATION_STUB name:mountain5 type:kotlin.Int visibility:public [static] declared in com.Muthuthiruj.cubeanimatingsdk.R.drawable' type=kotlin.Int superQualifierSymbol=com.Muthuthiruj.cubeanimatingsdk.R.drawable origin=null
+          GET_VAR 'val tmp0: kotlin.Array<out kotlin.Int> [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=kotlin.Array<out kotlin.Int> origin=null
+    CALL 'public final fun setRotationInterval (interval: kotlin.Long): kotlin.Unit declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk' type=kotlin.Unit origin=null
+      $this: BLOCK type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk origin=FOLDED_ELVIS
+        WHEN type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk origin=FOLDED_ELVIS
+          BRANCH
+            if: COMPOSITE type=kotlin.Boolean origin=null
+              VAR IR_TEMPORARY_VARIABLE name:tmp0 type:com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val]
+                GET_FIELD 'FIELD PROPERTY_BACKING_FIELD name:cubeSdk type:com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? visibility:private' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+                  receiver: GET_VAR '<this>: com.Muthuthiruj.cubeanimatingsdk.MainActivity declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity origin=null
+              CALL 'public final fun not (): kotlin.Boolean [operator] declared in kotlin.Boolean' type=kotlin.Boolean origin=null
+                $this: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=null
+                  arg0: GET_VAR 'val tmp0: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+                  arg1: CONST Null type=kotlin.Nothing? value=null
+            then: GET_VAR 'val tmp0: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+          BRANCH
+            if: CONST Boolean type=kotlin.Boolean value=true
+            then: BLOCK type=kotlin.Unit origin=null
+              CALL 'public final fun throwUninitializedPropertyAccessException (propertyName: kotlin.String): kotlin.Unit declared in kotlin.jvm.internal.Intrinsics' type=kotlin.Unit origin=null
+                propertyName: CONST String type=kotlin.String value="cubeSdk"
+      interval: CONST Long type=kotlin.Long value=3000
+    CALL 'public final fun setAnimationDuration (duration: kotlin.Long): kotlin.Unit declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk' type=kotlin.Unit origin=null
+      $this: BLOCK type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk origin=FOLDED_ELVIS
+        WHEN type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk origin=FOLDED_ELVIS
+          BRANCH
+            if: COMPOSITE type=kotlin.Boolean origin=null
+              VAR IR_TEMPORARY_VARIABLE name:tmp0 type:com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val]
+                GET_FIELD 'FIELD PROPERTY_BACKING_FIELD name:cubeSdk type:com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? visibility:private' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+                  receiver: GET_VAR '<this>: com.Muthuthiruj.cubeanimatingsdk.MainActivity declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity origin=null
+              CALL 'public final fun not (): kotlin.Boolean [operator] declared in kotlin.Boolean' type=kotlin.Boolean origin=null
+                $this: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=null
+                  arg0: GET_VAR 'val tmp0: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+                  arg1: CONST Null type=kotlin.Nothing? value=null
+            then: GET_VAR 'val tmp0: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+          BRANCH
+            if: CONST Boolean type=kotlin.Boolean value=true
+            then: BLOCK type=kotlin.Unit origin=null
+              CALL 'public final fun throwUninitializedPropertyAccessException (propertyName: kotlin.String): kotlin.Unit declared in kotlin.jvm.internal.Intrinsics' type=kotlin.Unit origin=null
+                propertyName: CONST String type=kotlin.String value="cubeSdk"
+      duration: CONST Long type=kotlin.Long value=1000
+    CALL 'public final fun setSwipeEnabled (enabled: kotlin.Boolean): kotlin.Unit declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk' type=kotlin.Unit origin=null
+      $this: BLOCK type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk origin=FOLDED_ELVIS
+        WHEN type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk origin=FOLDED_ELVIS
+          BRANCH
+            if: COMPOSITE type=kotlin.Boolean origin=null
+              VAR IR_TEMPORARY_VARIABLE name:tmp0 type:com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val]
+                GET_FIELD 'FIELD PROPERTY_BACKING_FIELD name:cubeSdk type:com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? visibility:private' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+                  receiver: GET_VAR '<this>: com.Muthuthiruj.cubeanimatingsdk.MainActivity declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity origin=null
+              CALL 'public final fun not (): kotlin.Boolean [operator] declared in kotlin.Boolean' type=kotlin.Boolean origin=null
+                $this: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=null
+                  arg0: GET_VAR 'val tmp0: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+                  arg1: CONST Null type=kotlin.Nothing? value=null
+            then: GET_VAR 'val tmp0: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+          BRANCH
+            if: CONST Boolean type=kotlin.Boolean value=true
+            then: BLOCK type=kotlin.Unit origin=null
+              CALL 'public final fun throwUninitializedPropertyAccessException (propertyName: kotlin.String): kotlin.Unit declared in kotlin.jvm.internal.Intrinsics' type=kotlin.Unit origin=null
+                propertyName: CONST String type=kotlin.String value="cubeSdk"
+      enabled: CONST Boolean type=kotlin.Boolean value=true
+    CALL 'public final fun setImageCaching (enabled: kotlin.Boolean): kotlin.Unit declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk' type=kotlin.Unit origin=null
+      $this: BLOCK type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk origin=FOLDED_ELVIS
+        WHEN type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk origin=FOLDED_ELVIS
+          BRANCH
+            if: COMPOSITE type=kotlin.Boolean origin=null
+              VAR IR_TEMPORARY_VARIABLE name:tmp0 type:com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val]
+                GET_FIELD 'FIELD PROPERTY_BACKING_FIELD name:cubeSdk type:com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? visibility:private' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+                  receiver: GET_VAR '<this>: com.Muthuthiruj.cubeanimatingsdk.MainActivity declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity origin=null
+              CALL 'public final fun not (): kotlin.Boolean [operator] declared in kotlin.Boolean' type=kotlin.Boolean origin=null
+                $this: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=null
+                  arg0: GET_VAR 'val tmp0: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+                  arg1: CONST Null type=kotlin.Nothing? value=null
+            then: GET_VAR 'val tmp0: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+          BRANCH
+            if: CONST Boolean type=kotlin.Boolean value=true
+            then: BLOCK type=kotlin.Unit origin=null
+              CALL 'public final fun throwUninitializedPropertyAccessException (propertyName: kotlin.String): kotlin.Unit declared in kotlin.jvm.internal.Intrinsics' type=kotlin.Unit origin=null
+                propertyName: CONST String type=kotlin.String value="cubeSdk"
+      enabled: CONST Boolean type=kotlin.Boolean value=true
+    CALL 'public final fun setImageScaleType (scaleType: android.widget.ImageView.ScaleType): kotlin.Unit declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk' type=kotlin.Unit origin=null
+      $this: BLOCK type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk origin=FOLDED_ELVIS
+        WHEN type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk origin=FOLDED_ELVIS
+          BRANCH
+            if: COMPOSITE type=kotlin.Boolean origin=null
+              VAR IR_TEMPORARY_VARIABLE name:tmp0 type:com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val]
+                GET_FIELD 'FIELD PROPERTY_BACKING_FIELD name:cubeSdk type:com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? visibility:private' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+                  receiver: GET_VAR '<this>: com.Muthuthiruj.cubeanimatingsdk.MainActivity declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity origin=null
+              CALL 'public final fun not (): kotlin.Boolean [operator] declared in kotlin.Boolean' type=kotlin.Boolean origin=null
+                $this: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=null
+                  arg0: GET_VAR 'val tmp0: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+                  arg1: CONST Null type=kotlin.Nothing? value=null
+            then: GET_VAR 'val tmp0: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+          BRANCH
+            if: CONST Boolean type=kotlin.Boolean value=true
+            then: BLOCK type=kotlin.Unit origin=null
+              CALL 'public final fun throwUninitializedPropertyAccessException (propertyName: kotlin.String): kotlin.Unit declared in kotlin.jvm.internal.Intrinsics' type=kotlin.Unit origin=null
+                propertyName: CONST String type=kotlin.String value="cubeSdk"
+      scaleType: GET_FIELD 'FIELD FIELD_FOR_ENUM_ENTRY name:FIT_XY type:android.widget.ImageView.ScaleType visibility:public [final,static] declared in android.widget.ImageView.ScaleType' type=android.widget.ImageView.ScaleType origin=null
+    CALL 'public final fun setImageSetName (name: kotlin.String): kotlin.Unit declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk' type=kotlin.Unit origin=null
+      $this: BLOCK type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk origin=FOLDED_ELVIS
+        WHEN type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk origin=FOLDED_ELVIS
+          BRANCH
+            if: COMPOSITE type=kotlin.Boolean origin=null
+              VAR IR_TEMPORARY_VARIABLE name:tmp0 type:com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val]
+                GET_FIELD 'FIELD PROPERTY_BACKING_FIELD name:cubeSdk type:com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? visibility:private' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+                  receiver: GET_VAR '<this>: com.Muthuthiruj.cubeanimatingsdk.MainActivity declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity origin=null
+              CALL 'public final fun not (): kotlin.Boolean [operator] declared in kotlin.Boolean' type=kotlin.Boolean origin=null
+                $this: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=null
+                  arg0: GET_VAR 'val tmp0: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+                  arg1: CONST Null type=kotlin.Nothing? value=null
+            then: GET_VAR 'val tmp0: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+          BRANCH
+            if: CONST Boolean type=kotlin.Boolean value=true
+            then: BLOCK type=kotlin.Unit origin=null
+              CALL 'public final fun throwUninitializedPropertyAccessException (propertyName: kotlin.String): kotlin.Unit declared in kotlin.jvm.internal.Intrinsics' type=kotlin.Unit origin=null
+                propertyName: CONST String type=kotlin.String value="cubeSdk"
+      name: CONST String type=kotlin.String value="Mountain Images"
+    VAR name:buttonConfig type:com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig [val]
+      CALL 'public final fun apply <T> (block: @[ExtensionFunctionType] kotlin.Function1<T of kotlin.StandardKt.apply, kotlin.Unit>): T of kotlin.StandardKt.apply [inline] declared in kotlin.StandardKt' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig origin=null
+        <T>: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig
+        $receiver: CONSTRUCTOR_CALL 'public constructor <init> (enabled: kotlin.Boolean, position: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonPosition?, text: kotlin.String?, backgroundColor: kotlin.Int, textColor: kotlin.Int, textSize: kotlin.Float, padding: kotlin.Int, width: kotlin.Int, height: kotlin.Int, showOnMain: kotlin.Boolean, showOnNext: kotlin.Boolean, visibilityMode: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonVisibility?, cornerRadius: kotlin.Float, elevation: kotlin.Float, $mask0: kotlin.Int, $marker: kotlin.jvm.internal.DefaultConstructorMarker?) declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig origin=DEFAULT_DISPATCH_CALL
+          enabled: COMPOSITE type=kotlin.Boolean origin=DEFAULT_VALUE
+            CONST Boolean type=kotlin.Boolean value=false
+          position: COMPOSITE type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonPosition? origin=DEFAULT_VALUE
+            CONST Null type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonPosition? value=null
+          text: COMPOSITE type=kotlin.String? origin=DEFAULT_VALUE
+            CONST Null type=kotlin.String? value=null
+          backgroundColor: COMPOSITE type=kotlin.Int origin=DEFAULT_VALUE
+            CONST Int type=kotlin.Int value=0
+          textColor: COMPOSITE type=kotlin.Int origin=DEFAULT_VALUE
+            CONST Int type=kotlin.Int value=0
+          textSize: COMPOSITE type=kotlin.Float origin=DEFAULT_VALUE
+            CONST Float type=kotlin.Float value=0.0
+          padding: COMPOSITE type=kotlin.Int origin=DEFAULT_VALUE
+            CONST Int type=kotlin.Int value=0
+          width: COMPOSITE type=kotlin.Int origin=DEFAULT_VALUE
+            CONST Int type=kotlin.Int value=0
+          height: COMPOSITE type=kotlin.Int origin=DEFAULT_VALUE
+            CONST Int type=kotlin.Int value=0
+          showOnMain: COMPOSITE type=kotlin.Boolean origin=DEFAULT_VALUE
+            CONST Boolean type=kotlin.Boolean value=false
+          showOnNext: COMPOSITE type=kotlin.Boolean origin=DEFAULT_VALUE
+            CONST Boolean type=kotlin.Boolean value=false
+          visibilityMode: COMPOSITE type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonVisibility? origin=DEFAULT_VALUE
+            CONST Null type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonVisibility? value=null
+          cornerRadius: COMPOSITE type=kotlin.Float origin=DEFAULT_VALUE
+            CONST Float type=kotlin.Float value=0.0
+          elevation: COMPOSITE type=kotlin.Float origin=DEFAULT_VALUE
+            CONST Float type=kotlin.Float value=0.0
+          $mask0: CONST Int type=kotlin.Int value=16383
+          $marker: CONST Null type=kotlin.jvm.internal.DefaultConstructorMarker? value=null
+        block: BLOCK type=@[ExtensionFunctionType] kotlin.Function1<com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig, kotlin.Unit> origin=LAMBDA
+          COMPOSITE type=kotlin.Unit origin=null
+          FUNCTION_REFERENCE 'private final fun setupCubeAnimatingSdk$lambda$0 (this$0: com.Muthuthiruj.cubeanimatingsdk.MainActivity): kotlin.Unit declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity' type=@[ExtensionFunctionType] kotlin.Function1<com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig, kotlin.Unit> origin=INLINE_LAMBDA reflectionTarget=null
+            this$0: GET_VAR '<this>: com.Muthuthiruj.cubeanimatingsdk.MainActivity declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity origin=null
+    CALL 'public final fun setButtonConfig (config: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig): kotlin.Unit declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk' type=kotlin.Unit origin=null
+      $this: BLOCK type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk origin=FOLDED_ELVIS
+        WHEN type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk origin=FOLDED_ELVIS
+          BRANCH
+            if: COMPOSITE type=kotlin.Boolean origin=null
+              VAR IR_TEMPORARY_VARIABLE name:tmp0 type:com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val]
+                GET_FIELD 'FIELD PROPERTY_BACKING_FIELD name:cubeSdk type:com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? visibility:private' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+                  receiver: GET_VAR '<this>: com.Muthuthiruj.cubeanimatingsdk.MainActivity declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity origin=null
+              CALL 'public final fun not (): kotlin.Boolean [operator] declared in kotlin.Boolean' type=kotlin.Boolean origin=null
+                $this: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=null
+                  arg0: GET_VAR 'val tmp0: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+                  arg1: CONST Null type=kotlin.Nothing? value=null
+            then: GET_VAR 'val tmp0: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+          BRANCH
+            if: CONST Boolean type=kotlin.Boolean value=true
+            then: BLOCK type=kotlin.Unit origin=null
+              CALL 'public final fun throwUninitializedPropertyAccessException (propertyName: kotlin.String): kotlin.Unit declared in kotlin.jvm.internal.Intrinsics' type=kotlin.Unit origin=null
+                propertyName: CONST String type=kotlin.String value="cubeSdk"
+      config: GET_VAR 'val buttonConfig: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig origin=null
+    CALL 'public final fun setButtonOnIndices (vararg indices: kotlin.Int): kotlin.Unit declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk' type=kotlin.Unit origin=null
+      $this: BLOCK type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk origin=FOLDED_ELVIS
+        WHEN type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk origin=FOLDED_ELVIS
+          BRANCH
+            if: COMPOSITE type=kotlin.Boolean origin=null
+              VAR IR_TEMPORARY_VARIABLE name:tmp0 type:com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val]
+                GET_FIELD 'FIELD PROPERTY_BACKING_FIELD name:cubeSdk type:com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? visibility:private' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+                  receiver: GET_VAR '<this>: com.Muthuthiruj.cubeanimatingsdk.MainActivity declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity origin=null
+              CALL 'public final fun not (): kotlin.Boolean [operator] declared in kotlin.Boolean' type=kotlin.Boolean origin=null
+                $this: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=null
+                  arg0: GET_VAR 'val tmp0: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+                  arg1: CONST Null type=kotlin.Nothing? value=null
+            then: GET_VAR 'val tmp0: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+          BRANCH
+            if: CONST Boolean type=kotlin.Boolean value=true
+            then: BLOCK type=kotlin.Unit origin=null
+              CALL 'public final fun throwUninitializedPropertyAccessException (propertyName: kotlin.String): kotlin.Unit declared in kotlin.jvm.internal.Intrinsics' type=kotlin.Unit origin=null
+                propertyName: CONST String type=kotlin.String value="cubeSdk"
+      indices: BLOCK type=kotlin.IntArray origin=null
+        VAR IR_TEMPORARY_VARIABLE name:tmp0 type:kotlin.IntArray [val]
+          CONSTRUCTOR_CALL 'public constructor <init> (size: kotlin.Int) [primary] declared in kotlin.IntArray' type=kotlin.IntArray origin=null
+            size: CONST Int type=kotlin.Int value=3
+        CALL 'public final fun set (index: kotlin.Int, value: kotlin.Int): kotlin.Unit [operator] declared in kotlin.IntArray' type=kotlin.Unit origin=null
+          $this: GET_VAR 'val tmp0: kotlin.IntArray [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=kotlin.IntArray origin=null
+          index: CONST Int type=kotlin.Int value=0
+          value: CONST Int type=kotlin.Int value=0
+        CALL 'public final fun set (index: kotlin.Int, value: kotlin.Int): kotlin.Unit [operator] declared in kotlin.IntArray' type=kotlin.Unit origin=null
+          $this: GET_VAR 'val tmp0: kotlin.IntArray [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=kotlin.IntArray origin=null
+          index: CONST Int type=kotlin.Int value=1
+          value: CONST Int type=kotlin.Int value=2
+        CALL 'public final fun set (index: kotlin.Int, value: kotlin.Int): kotlin.Unit [operator] declared in kotlin.IntArray' type=kotlin.Unit origin=null
+          $this: GET_VAR 'val tmp0: kotlin.IntArray [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=kotlin.IntArray origin=null
+          index: CONST Int type=kotlin.Int value=2
+          value: CONST Int type=kotlin.Int value=4
+        GET_VAR 'val tmp0: kotlin.IntArray [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=kotlin.IntArray origin=null
+    VAR name:greetingConfig type:com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.GreetingConfig [val]
+      CALL 'public final fun apply <T> (block: @[ExtensionFunctionType] kotlin.Function1<T of kotlin.StandardKt.apply, kotlin.Unit>): T of kotlin.StandardKt.apply [inline] declared in kotlin.StandardKt' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.GreetingConfig origin=null
+        <T>: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.GreetingConfig
+        $receiver: CONSTRUCTOR_CALL 'public constructor <init> (text: kotlin.String?, textSize: kotlin.Float, textColor: kotlin.Int, textStyle: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.TextStyle?, position: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.GreetingPosition?, showOnMain: kotlin.Boolean, showOnNext: kotlin.Boolean, backgroundColor: kotlin.Int, padding: kotlin.Int, $mask0: kotlin.Int, $marker: kotlin.jvm.internal.DefaultConstructorMarker?) declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.GreetingConfig' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.GreetingConfig origin=DEFAULT_DISPATCH_CALL
+          text: COMPOSITE type=kotlin.String? origin=DEFAULT_VALUE
+            CONST Null type=kotlin.String? value=null
+          textSize: COMPOSITE type=kotlin.Float origin=DEFAULT_VALUE
+            CONST Float type=kotlin.Float value=0.0
+          textColor: COMPOSITE type=kotlin.Int origin=DEFAULT_VALUE
+            CONST Int type=kotlin.Int value=0
+          textStyle: COMPOSITE type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.TextStyle? origin=DEFAULT_VALUE
+            CONST Null type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.TextStyle? value=null
+          position: COMPOSITE type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.GreetingPosition? origin=DEFAULT_VALUE
+            CONST Null type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.GreetingPosition? value=null
+          showOnMain: COMPOSITE type=kotlin.Boolean origin=DEFAULT_VALUE
+            CONST Boolean type=kotlin.Boolean value=false
+          showOnNext: COMPOSITE type=kotlin.Boolean origin=DEFAULT_VALUE
+            CONST Boolean type=kotlin.Boolean value=false
+          backgroundColor: COMPOSITE type=kotlin.Int origin=DEFAULT_VALUE
+            CONST Int type=kotlin.Int value=0
+          padding: COMPOSITE type=kotlin.Int origin=DEFAULT_VALUE
+            CONST Int type=kotlin.Int value=0
+          $mask0: CONST Int type=kotlin.Int value=511
+          $marker: CONST Null type=kotlin.jvm.internal.DefaultConstructorMarker? value=null
+        block: BLOCK type=@[ExtensionFunctionType] kotlin.Function1<com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.GreetingConfig, kotlin.Unit> origin=LAMBDA
+          COMPOSITE type=kotlin.Unit origin=null
+          FUNCTION_REFERENCE 'private final fun setupCubeAnimatingSdk$lambda$1 (this$0: com.Muthuthiruj.cubeanimatingsdk.MainActivity): kotlin.Unit declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity' type=@[ExtensionFunctionType] kotlin.Function1<com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.GreetingConfig, kotlin.Unit> origin=INLINE_LAMBDA reflectionTarget=null
+            this$0: GET_VAR '<this>: com.Muthuthiruj.cubeanimatingsdk.MainActivity declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity origin=null
+    CALL 'public final fun setGreetingConfig (config: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.GreetingConfig): kotlin.Unit declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk' type=kotlin.Unit origin=null
+      $this: BLOCK type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk origin=FOLDED_ELVIS
+        WHEN type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk origin=FOLDED_ELVIS
+          BRANCH
+            if: COMPOSITE type=kotlin.Boolean origin=null
+              VAR IR_TEMPORARY_VARIABLE name:tmp0 type:com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val]
+                GET_FIELD 'FIELD PROPERTY_BACKING_FIELD name:cubeSdk type:com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? visibility:private' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+                  receiver: GET_VAR '<this>: com.Muthuthiruj.cubeanimatingsdk.MainActivity declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity origin=null
+              CALL 'public final fun not (): kotlin.Boolean [operator] declared in kotlin.Boolean' type=kotlin.Boolean origin=null
+                $this: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=null
+                  arg0: GET_VAR 'val tmp0: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+                  arg1: CONST Null type=kotlin.Nothing? value=null
+            then: GET_VAR 'val tmp0: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+          BRANCH
+            if: CONST Boolean type=kotlin.Boolean value=true
+            then: BLOCK type=kotlin.Unit origin=null
+              CALL 'public final fun throwUninitializedPropertyAccessException (propertyName: kotlin.String): kotlin.Unit declared in kotlin.jvm.internal.Intrinsics' type=kotlin.Unit origin=null
+                propertyName: CONST String type=kotlin.String value="cubeSdk"
+      config: GET_VAR 'val greetingConfig: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.GreetingConfig [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.GreetingConfig origin=null
+    CALL 'public final fun setGreetingOnIndices (vararg indices: kotlin.Int): kotlin.Unit declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk' type=kotlin.Unit origin=null
+      $this: BLOCK type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk origin=FOLDED_ELVIS
+        WHEN type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk origin=FOLDED_ELVIS
+          BRANCH
+            if: COMPOSITE type=kotlin.Boolean origin=null
+              VAR IR_TEMPORARY_VARIABLE name:tmp0 type:com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val]
+                GET_FIELD 'FIELD PROPERTY_BACKING_FIELD name:cubeSdk type:com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? visibility:private' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+                  receiver: GET_VAR '<this>: com.Muthuthiruj.cubeanimatingsdk.MainActivity declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity origin=null
+              CALL 'public final fun not (): kotlin.Boolean [operator] declared in kotlin.Boolean' type=kotlin.Boolean origin=null
+                $this: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=null
+                  arg0: GET_VAR 'val tmp0: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+                  arg1: CONST Null type=kotlin.Nothing? value=null
+            then: GET_VAR 'val tmp0: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+          BRANCH
+            if: CONST Boolean type=kotlin.Boolean value=true
+            then: BLOCK type=kotlin.Unit origin=null
+              CALL 'public final fun throwUninitializedPropertyAccessException (propertyName: kotlin.String): kotlin.Unit declared in kotlin.jvm.internal.Intrinsics' type=kotlin.Unit origin=null
+                propertyName: CONST String type=kotlin.String value="cubeSdk"
+      indices: BLOCK type=kotlin.IntArray origin=null
+        VAR IR_TEMPORARY_VARIABLE name:tmp0 type:kotlin.IntArray [val]
+          CONSTRUCTOR_CALL 'public constructor <init> (size: kotlin.Int) [primary] declared in kotlin.IntArray' type=kotlin.IntArray origin=null
+            size: CONST Int type=kotlin.Int value=2
+        CALL 'public final fun set (index: kotlin.Int, value: kotlin.Int): kotlin.Unit [operator] declared in kotlin.IntArray' type=kotlin.Unit origin=null
+          $this: GET_VAR 'val tmp0: kotlin.IntArray [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=kotlin.IntArray origin=null
+          index: CONST Int type=kotlin.Int value=0
+          value: CONST Int type=kotlin.Int value=0
+        CALL 'public final fun set (index: kotlin.Int, value: kotlin.Int): kotlin.Unit [operator] declared in kotlin.IntArray' type=kotlin.Unit origin=null
+          $this: GET_VAR 'val tmp0: kotlin.IntArray [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=kotlin.IntArray origin=null
+          index: CONST Int type=kotlin.Int value=1
+          value: CONST Int type=kotlin.Int value=1
+        GET_VAR 'val tmp0: kotlin.IntArray [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=kotlin.IntArray origin=null
+    CALL 'public final fun setOnButtonClickListener (listener: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.OnButtonClickListener): kotlin.Unit declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk' type=kotlin.Unit origin=null
+      $this: BLOCK type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk origin=FOLDED_ELVIS
+        WHEN type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk origin=FOLDED_ELVIS
+          BRANCH
+            if: COMPOSITE type=kotlin.Boolean origin=null
+              VAR IR_TEMPORARY_VARIABLE name:tmp0 type:com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val]
+                GET_FIELD 'FIELD PROPERTY_BACKING_FIELD name:cubeSdk type:com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? visibility:private' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+                  receiver: GET_VAR '<this>: com.Muthuthiruj.cubeanimatingsdk.MainActivity declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity origin=null
+              CALL 'public final fun not (): kotlin.Boolean [operator] declared in kotlin.Boolean' type=kotlin.Boolean origin=null
+                $this: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=null
+                  arg0: GET_VAR 'val tmp0: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+                  arg1: CONST Null type=kotlin.Nothing? value=null
+            then: GET_VAR 'val tmp0: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+          BRANCH
+            if: CONST Boolean type=kotlin.Boolean value=true
+            then: BLOCK type=kotlin.Unit origin=null
+              CALL 'public final fun throwUninitializedPropertyAccessException (propertyName: kotlin.String): kotlin.Unit declared in kotlin.jvm.internal.Intrinsics' type=kotlin.Unit origin=null
+                propertyName: CONST String type=kotlin.String value="cubeSdk"
+      listener: BLOCK type=com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> origin=OBJECT_LITERAL
+        CLASS CLASS name:<no name provided> modality:FINAL visibility:local superTypes:[com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.OnButtonClickListener]
+          $this: VALUE_PARAMETER INSTANCE_RECEIVER name:<this> type:com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>
+          CONSTRUCTOR visibility:public/*package*/ <> (this$0:com.Muthuthiruj.cubeanimatingsdk.MainActivity) returnType:com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> [primary]
+            VALUE_PARAMETER BOUND_RECEIVER_PARAMETER name:this$0 index:0 type:com.Muthuthiruj.cubeanimatingsdk.MainActivity
+            BLOCK_BODY
+              SET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:this$0 type:com.Muthuthiruj.cubeanimatingsdk.MainActivity visibility:public/*package*/ [final] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>' type=kotlin.Unit origin=INITIALIZER_OF_FIELD_FOR_CAPTURED_VALUE
+                receiver: GET_VAR '<this>: com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> origin=null
+                value: GET_VAR 'this$0: com.Muthuthiruj.cubeanimatingsdk.MainActivity declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>.<init>' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity origin=null
+              DELEGATING_CONSTRUCTOR_CALL 'public constructor <init> () [primary] declared in kotlin.Any'
+              BLOCK type=kotlin.Unit origin=null
+          FUN name:onButtonClick visibility:public modality:OPEN <> ($this:com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>, index:kotlin.Int, image:kotlin.Any?) returnType:kotlin.Unit
+            overridden:
+              public abstract fun onButtonClick (index: kotlin.Int, image: kotlin.Any?): kotlin.Unit declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.OnButtonClickListener
+            $this: VALUE_PARAMETER name:<this> type:com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>
+            VALUE_PARAMETER name:index index:0 type:kotlin.Int
+            VALUE_PARAMETER name:image index:1 type:kotlin.Any?
+            BLOCK_BODY
+              CALL 'public open fun show (): kotlin.Unit declared in android.widget.Toast' type=kotlin.Unit origin=null
+                $this: CALL 'public open fun makeText (p0: @[FlexibleNullability] android.content.Context?, p1: @[FlexibleNullability] kotlin.CharSequence?, p2: kotlin.Int): @[FlexibleNullability] android.widget.Toast? declared in android.widget.Toast' type=@[FlexibleNullability] android.widget.Toast? origin=null
+                  p0: GET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:this$0 type:com.Muthuthiruj.cubeanimatingsdk.MainActivity visibility:public/*package*/ [final] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity origin=null
+                    receiver: GET_VAR '<this>: com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>.onButtonClick' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> origin=null
+                  p1: STRING_CONCATENATION type=kotlin.String
+                    CONST String type=kotlin.String value="Button clicked on image "
+                    GET_VAR 'index: kotlin.Int declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>.onButtonClick' type=kotlin.Int origin=null
+                  p2: CONST Int type=kotlin.Int value=0
+              COMPOSITE type=kotlin.Unit origin=null
+                CALL 'public open fun d (p0: @[EnhancedNullability] kotlin.String?, p1: @[EnhancedNullability] kotlin.String): kotlin.Int declared in android.util.Log' type=kotlin.Int origin=null
+                  p0: CONST String type=kotlin.String value="CubeSDK"
+                  p1: STRING_CONCATENATION type=kotlin.String
+                    CONST String type=kotlin.String value="\uD83C\uDFAF Button clicked: index="
+                    GET_VAR 'index: kotlin.Int declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>.onButtonClick' type=kotlin.Int origin=null
+                    CONST String type=kotlin.String value=", image="
+                    GET_VAR 'image: kotlin.Any? declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>.onButtonClick' type=kotlin.Any? origin=null
+                COMPOSITE type=kotlin.Unit origin=null
+              BLOCK type=kotlin.Unit origin=WHEN
+                VAR IR_TEMPORARY_VARIABLE name:tmp0_subject type:kotlin.Int [val]
+                  GET_VAR 'index: kotlin.Int declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>.onButtonClick' type=kotlin.Int origin=null
+                WHEN type=kotlin.Unit origin=WHEN
+                  BRANCH
+                    if: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=EQEQ
+                      arg0: GET_VAR 'val tmp0_subject: kotlin.Int [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>.onButtonClick' type=kotlin.Int origin=null
+                      arg1: CONST Int type=kotlin.Int value=0
+                    then: CALL 'public final fun access$startLogin ($this: com.Muthuthiruj.cubeanimatingsdk.MainActivity): kotlin.Unit declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity' type=kotlin.Unit origin=null
+                      $this: GET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:this$0 type:com.Muthuthiruj.cubeanimatingsdk.MainActivity visibility:public/*package*/ [final] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity origin=null
+                        receiver: GET_VAR '<this>: com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>.onButtonClick' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> origin=null
+                  BRANCH
+                    if: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=EQEQ
+                      arg0: GET_VAR 'val tmp0_subject: kotlin.Int [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>.onButtonClick' type=kotlin.Int origin=null
+                      arg1: CONST Int type=kotlin.Int value=1
+                    then: CALL 'public final fun access$showSpecialOffer ($this: com.Muthuthiruj.cubeanimatingsdk.MainActivity): kotlin.Unit declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity' type=kotlin.Unit origin=null
+                      $this: GET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:this$0 type:com.Muthuthiruj.cubeanimatingsdk.MainActivity visibility:public/*package*/ [final] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity origin=null
+                        receiver: GET_VAR '<this>: com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>.onButtonClick' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> origin=null
+                  BRANCH
+                    if: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=EQEQ
+                      arg0: GET_VAR 'val tmp0_subject: kotlin.Int [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>.onButtonClick' type=kotlin.Int origin=null
+                      arg1: CONST Int type=kotlin.Int value=2
+                    then: CALL 'public final fun access$showSignUp ($this: com.Muthuthiruj.cubeanimatingsdk.MainActivity): kotlin.Unit declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity' type=kotlin.Unit origin=null
+                      $this: GET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:this$0 type:com.Muthuthiruj.cubeanimatingsdk.MainActivity visibility:public/*package*/ [final] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity origin=null
+                        receiver: GET_VAR '<this>: com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>.onButtonClick' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> origin=null
+                  BRANCH
+                    if: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=EQEQ
+                      arg0: GET_VAR 'val tmp0_subject: kotlin.Int [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>.onButtonClick' type=kotlin.Int origin=null
+                      arg1: CONST Int type=kotlin.Int value=3
+                    then: CALL 'public final fun access$learnMore ($this: com.Muthuthiruj.cubeanimatingsdk.MainActivity): kotlin.Unit declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity' type=kotlin.Unit origin=null
+                      $this: GET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:this$0 type:com.Muthuthiruj.cubeanimatingsdk.MainActivity visibility:public/*package*/ [final] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity origin=null
+                        receiver: GET_VAR '<this>: com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>.onButtonClick' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> origin=null
+                  BRANCH
+                    if: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=EQEQ
+                      arg0: GET_VAR 'val tmp0_subject: kotlin.Int [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>.onButtonClick' type=kotlin.Int origin=null
+                      arg1: CONST Int type=kotlin.Int value=4
+                    then: CALL 'public final fun access$exploreFeatures ($this: com.Muthuthiruj.cubeanimatingsdk.MainActivity): kotlin.Unit declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity' type=kotlin.Unit origin=null
+                      $this: GET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:this$0 type:com.Muthuthiruj.cubeanimatingsdk.MainActivity visibility:public/*package*/ [final] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity origin=null
+                        receiver: GET_VAR '<this>: com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>.onButtonClick' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> origin=null
+                  BRANCH
+                    if: CONST Boolean type=kotlin.Boolean value=true
+                    then: CALL 'public final fun access$showDefaultAction ($this: com.Muthuthiruj.cubeanimatingsdk.MainActivity): kotlin.Unit declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity' type=kotlin.Unit origin=null
+                      $this: GET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:this$0 type:com.Muthuthiruj.cubeanimatingsdk.MainActivity visibility:public/*package*/ [final] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity origin=null
+                        receiver: GET_VAR '<this>: com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>.onButtonClick' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> origin=null
+          FUN FAKE_OVERRIDE name:equals visibility:public modality:OPEN <> ($this:kotlin.Any, other:kotlin.Any?) returnType:kotlin.Boolean [fake_override,operator]
+            overridden:
+              public open fun equals (other: kotlin.Any?): kotlin.Boolean [fake_override,operator] declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.OnButtonClickListener
+            $this: VALUE_PARAMETER name:<this> type:kotlin.Any
+            VALUE_PARAMETER name:other index:0 type:kotlin.Any?
+          FUN FAKE_OVERRIDE name:hashCode visibility:public modality:OPEN <> ($this:kotlin.Any) returnType:kotlin.Int [fake_override]
+            overridden:
+              public open fun hashCode (): kotlin.Int [fake_override] declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.OnButtonClickListener
+            $this: VALUE_PARAMETER name:<this> type:kotlin.Any
+          FUN FAKE_OVERRIDE name:toString visibility:public modality:OPEN <> ($this:kotlin.Any) returnType:kotlin.String [fake_override]
+            overridden:
+              public open fun toString (): kotlin.String [fake_override] declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.OnButtonClickListener
+            $this: VALUE_PARAMETER name:<this> type:kotlin.Any
+          FIELD FIELD_FOR_CAPTURED_VALUE name:this$0 type:com.Muthuthiruj.cubeanimatingsdk.MainActivity visibility:public/*package*/ [final]
+        BLOCK type=com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> origin=null
+          CONSTRUCTOR_CALL 'public/*package*/ constructor <init> (this$0: com.Muthuthiruj.cubeanimatingsdk.MainActivity) [primary] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> origin=OBJECT_LITERAL
+            this$0: GET_VAR '<this>: com.Muthuthiruj.cubeanimatingsdk.MainActivity declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity origin=null
+    CALL 'public final fun setOnImageLoadListener (listener: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.OnImageLoadListener): kotlin.Unit declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk' type=kotlin.Unit origin=null
+      $this: BLOCK type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk origin=FOLDED_ELVIS
+        WHEN type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk origin=FOLDED_ELVIS
+          BRANCH
+            if: COMPOSITE type=kotlin.Boolean origin=null
+              VAR IR_TEMPORARY_VARIABLE name:tmp0 type:com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val]
+                GET_FIELD 'FIELD PROPERTY_BACKING_FIELD name:cubeSdk type:com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? visibility:private' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+                  receiver: GET_VAR '<this>: com.Muthuthiruj.cubeanimatingsdk.MainActivity declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity origin=null
+              CALL 'public final fun not (): kotlin.Boolean [operator] declared in kotlin.Boolean' type=kotlin.Boolean origin=null
+                $this: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=null
+                  arg0: GET_VAR 'val tmp0: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+                  arg1: CONST Null type=kotlin.Nothing? value=null
+            then: GET_VAR 'val tmp0: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+          BRANCH
+            if: CONST Boolean type=kotlin.Boolean value=true
+            then: BLOCK type=kotlin.Unit origin=null
+              CALL 'public final fun throwUninitializedPropertyAccessException (propertyName: kotlin.String): kotlin.Unit declared in kotlin.jvm.internal.Intrinsics' type=kotlin.Unit origin=null
+                propertyName: CONST String type=kotlin.String value="cubeSdk"
+      listener: BLOCK type=com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> origin=OBJECT_LITERAL
+        CLASS CLASS name:<no name provided> modality:FINAL visibility:local superTypes:[com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.OnImageLoadListener]
+          $this: VALUE_PARAMETER INSTANCE_RECEIVER name:<this> type:com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>
+          CONSTRUCTOR visibility:public/*package*/ <> (this$0:com.Muthuthiruj.cubeanimatingsdk.MainActivity) returnType:com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> [primary]
+            VALUE_PARAMETER BOUND_RECEIVER_PARAMETER name:this$0 index:0 type:com.Muthuthiruj.cubeanimatingsdk.MainActivity
+            BLOCK_BODY
+              SET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:this$0 type:com.Muthuthiruj.cubeanimatingsdk.MainActivity visibility:public/*package*/ [final] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>' type=kotlin.Unit origin=INITIALIZER_OF_FIELD_FOR_CAPTURED_VALUE
+                receiver: GET_VAR '<this>: com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> origin=null
+                value: GET_VAR 'this$0: com.Muthuthiruj.cubeanimatingsdk.MainActivity declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>.<init>' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity origin=null
+              DELEGATING_CONSTRUCTOR_CALL 'public constructor <init> () [primary] declared in kotlin.Any'
+              BLOCK type=kotlin.Unit origin=null
+          FUN name:onImageLoad visibility:public modality:OPEN <> ($this:com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>, index:kotlin.Int, image:kotlin.Any?) returnType:kotlin.Unit
+            overridden:
+              public abstract fun onImageLoad (index: kotlin.Int, image: kotlin.Any?): kotlin.Unit declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.OnImageLoadListener
+            $this: VALUE_PARAMETER name:<this> type:com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>
+            VALUE_PARAMETER name:index index:0 type:kotlin.Int
+            VALUE_PARAMETER name:image index:1 type:kotlin.Any?
+            BLOCK_BODY
+              COMPOSITE type=kotlin.Unit origin=null
+                CALL 'public open fun d (p0: @[EnhancedNullability] kotlin.String?, p1: @[EnhancedNullability] kotlin.String): kotlin.Int declared in android.util.Log' type=kotlin.Int origin=null
+                  p0: CONST String type=kotlin.String value="CubeSDK"
+                  p1: STRING_CONCATENATION type=kotlin.String
+                    CONST String type=kotlin.String value="✅ Image loaded: index="
+                    GET_VAR 'index: kotlin.Int declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>.onImageLoad' type=kotlin.Int origin=null
+                    CONST String type=kotlin.String value=", resourceId="
+                    GET_VAR 'image: kotlin.Any? declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>.onImageLoad' type=kotlin.Any? origin=null
+                COMPOSITE type=kotlin.Unit origin=null
+              CALL 'public open fun show (): kotlin.Unit declared in android.widget.Toast' type=kotlin.Unit origin=null
+                $this: CALL 'public open fun makeText (p0: @[FlexibleNullability] android.content.Context?, p1: @[FlexibleNullability] kotlin.CharSequence?, p2: kotlin.Int): @[FlexibleNullability] android.widget.Toast? declared in android.widget.Toast' type=@[FlexibleNullability] android.widget.Toast? origin=null
+                  p0: GET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:this$0 type:com.Muthuthiruj.cubeanimatingsdk.MainActivity visibility:public/*package*/ [final] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity origin=null
+                    receiver: GET_VAR '<this>: com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>.onImageLoad' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> origin=null
+                  p1: STRING_CONCATENATION type=kotlin.String
+                    CONST String type=kotlin.String value="Image "
+                    CALL 'public final fun plus (other: kotlin.Int): kotlin.Int [operator] declared in kotlin.Int' type=kotlin.Int origin=PLUS
+                      $this: GET_VAR 'index: kotlin.Int declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>.onImageLoad' type=kotlin.Int origin=null
+                      other: CONST Int type=kotlin.Int value=1
+                    CONST String type=kotlin.String value=" loaded successfully"
+                  p2: CONST Int type=kotlin.Int value=0
+          FUN FAKE_OVERRIDE name:equals visibility:public modality:OPEN <> ($this:kotlin.Any, other:kotlin.Any?) returnType:kotlin.Boolean [fake_override,operator]
+            overridden:
+              public open fun equals (other: kotlin.Any?): kotlin.Boolean [fake_override,operator] declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.OnImageLoadListener
+            $this: VALUE_PARAMETER name:<this> type:kotlin.Any
+            VALUE_PARAMETER name:other index:0 type:kotlin.Any?
+          FUN FAKE_OVERRIDE name:hashCode visibility:public modality:OPEN <> ($this:kotlin.Any) returnType:kotlin.Int [fake_override]
+            overridden:
+              public open fun hashCode (): kotlin.Int [fake_override] declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.OnImageLoadListener
+            $this: VALUE_PARAMETER name:<this> type:kotlin.Any
+          FUN FAKE_OVERRIDE name:toString visibility:public modality:OPEN <> ($this:kotlin.Any) returnType:kotlin.String [fake_override]
+            overridden:
+              public open fun toString (): kotlin.String [fake_override] declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.OnImageLoadListener
+            $this: VALUE_PARAMETER name:<this> type:kotlin.Any
+          FIELD FIELD_FOR_CAPTURED_VALUE name:this$0 type:com.Muthuthiruj.cubeanimatingsdk.MainActivity visibility:public/*package*/ [final]
+        BLOCK type=com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> origin=null
+          CONSTRUCTOR_CALL 'public/*package*/ constructor <init> (this$0: com.Muthuthiruj.cubeanimatingsdk.MainActivity) [primary] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> origin=OBJECT_LITERAL
+            this$0: GET_VAR '<this>: com.Muthuthiruj.cubeanimatingsdk.MainActivity declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity origin=null
+    CALL 'public final fun setOnAnimationCompleteListener (listener: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.OnAnimationCompleteListener): kotlin.Unit declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk' type=kotlin.Unit origin=null
+      $this: BLOCK type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk origin=FOLDED_ELVIS
+        WHEN type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk origin=FOLDED_ELVIS
+          BRANCH
+            if: COMPOSITE type=kotlin.Boolean origin=null
+              VAR IR_TEMPORARY_VARIABLE name:tmp0 type:com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val]
+                GET_FIELD 'FIELD PROPERTY_BACKING_FIELD name:cubeSdk type:com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? visibility:private' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+                  receiver: GET_VAR '<this>: com.Muthuthiruj.cubeanimatingsdk.MainActivity declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity origin=null
+              CALL 'public final fun not (): kotlin.Boolean [operator] declared in kotlin.Boolean' type=kotlin.Boolean origin=null
+                $this: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=null
+                  arg0: GET_VAR 'val tmp0: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+                  arg1: CONST Null type=kotlin.Nothing? value=null
+            then: GET_VAR 'val tmp0: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+          BRANCH
+            if: CONST Boolean type=kotlin.Boolean value=true
+            then: BLOCK type=kotlin.Unit origin=null
+              CALL 'public final fun throwUninitializedPropertyAccessException (propertyName: kotlin.String): kotlin.Unit declared in kotlin.jvm.internal.Intrinsics' type=kotlin.Unit origin=null
+                propertyName: CONST String type=kotlin.String value="cubeSdk"
+      listener: BLOCK type=com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> origin=OBJECT_LITERAL
+        CLASS CLASS name:<no name provided> modality:FINAL visibility:local superTypes:[com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.OnAnimationCompleteListener]
+          $this: VALUE_PARAMETER INSTANCE_RECEIVER name:<this> type:com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>
+          CONSTRUCTOR visibility:public/*package*/ <> (this$0:com.Muthuthiruj.cubeanimatingsdk.MainActivity) returnType:com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> [primary]
+            VALUE_PARAMETER BOUND_RECEIVER_PARAMETER name:this$0 index:0 type:com.Muthuthiruj.cubeanimatingsdk.MainActivity
+            BLOCK_BODY
+              SET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:this$0 type:com.Muthuthiruj.cubeanimatingsdk.MainActivity visibility:public/*package*/ [final] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>' type=kotlin.Unit origin=INITIALIZER_OF_FIELD_FOR_CAPTURED_VALUE
+                receiver: GET_VAR '<this>: com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> origin=null
+                value: GET_VAR 'this$0: com.Muthuthiruj.cubeanimatingsdk.MainActivity declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>.<init>' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity origin=null
+              DELEGATING_CONSTRUCTOR_CALL 'public constructor <init> () [primary] declared in kotlin.Any'
+              BLOCK type=kotlin.Unit origin=null
+          FUN name:onAnimationComplete visibility:public modality:OPEN <> ($this:com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>, currentIndex:kotlin.Int) returnType:kotlin.Unit
+            overridden:
+              public abstract fun onAnimationComplete (currentIndex: kotlin.Int): kotlin.Unit declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.OnAnimationCompleteListener
+            $this: VALUE_PARAMETER name:<this> type:com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>
+            VALUE_PARAMETER name:currentIndex index:0 type:kotlin.Int
+            BLOCK_BODY
+              COMPOSITE type=kotlin.Unit origin=null
+                CALL 'public open fun d (p0: @[EnhancedNullability] kotlin.String?, p1: @[EnhancedNullability] kotlin.String): kotlin.Int declared in android.util.Log' type=kotlin.Int origin=null
+                  p0: CONST String type=kotlin.String value="CubeSDK"
+                  p1: STRING_CONCATENATION type=kotlin.String
+                    CONST String type=kotlin.String value="\uD83D\uDD04 Animation completed, now showing image: "
+                    GET_VAR 'currentIndex: kotlin.Int declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>.onAnimationComplete' type=kotlin.Int origin=null
+                COMPOSITE type=kotlin.Unit origin=null
+              CALL 'public open fun show (): kotlin.Unit declared in android.widget.Toast' type=kotlin.Unit origin=null
+                $this: CALL 'public open fun makeText (p0: @[FlexibleNullability] android.content.Context?, p1: @[FlexibleNullability] kotlin.CharSequence?, p2: kotlin.Int): @[FlexibleNullability] android.widget.Toast? declared in android.widget.Toast' type=@[FlexibleNullability] android.widget.Toast? origin=null
+                  p0: GET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:this$0 type:com.Muthuthiruj.cubeanimatingsdk.MainActivity visibility:public/*package*/ [final] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity origin=null
+                    receiver: GET_VAR '<this>: com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>.onAnimationComplete' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> origin=null
+                  p1: STRING_CONCATENATION type=kotlin.String
+                    CONST String type=kotlin.String value="Now showing image "
+                    CALL 'public final fun plus (other: kotlin.Int): kotlin.Int [operator] declared in kotlin.Int' type=kotlin.Int origin=PLUS
+                      $this: GET_VAR 'currentIndex: kotlin.Int declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>.onAnimationComplete' type=kotlin.Int origin=null
+                      other: CONST Int type=kotlin.Int value=1
+                  p2: CONST Int type=kotlin.Int value=0
+          FUN FAKE_OVERRIDE name:equals visibility:public modality:OPEN <> ($this:kotlin.Any, other:kotlin.Any?) returnType:kotlin.Boolean [fake_override,operator]
+            overridden:
+              public open fun equals (other: kotlin.Any?): kotlin.Boolean [fake_override,operator] declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.OnAnimationCompleteListener
+            $this: VALUE_PARAMETER name:<this> type:kotlin.Any
+            VALUE_PARAMETER name:other index:0 type:kotlin.Any?
+          FUN FAKE_OVERRIDE name:hashCode visibility:public modality:OPEN <> ($this:kotlin.Any) returnType:kotlin.Int [fake_override]
+            overridden:
+              public open fun hashCode (): kotlin.Int [fake_override] declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.OnAnimationCompleteListener
+            $this: VALUE_PARAMETER name:<this> type:kotlin.Any
+          FUN FAKE_OVERRIDE name:toString visibility:public modality:OPEN <> ($this:kotlin.Any) returnType:kotlin.String [fake_override]
+            overridden:
+              public open fun toString (): kotlin.String [fake_override] declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.OnAnimationCompleteListener
+            $this: VALUE_PARAMETER name:<this> type:kotlin.Any
+          FIELD FIELD_FOR_CAPTURED_VALUE name:this$0 type:com.Muthuthiruj.cubeanimatingsdk.MainActivity visibility:public/*package*/ [final]
+        BLOCK type=com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> origin=null
+          CONSTRUCTOR_CALL 'public/*package*/ constructor <init> (this$0: com.Muthuthiruj.cubeanimatingsdk.MainActivity) [primary] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> origin=OBJECT_LITERAL
+            this$0: GET_VAR '<this>: com.Muthuthiruj.cubeanimatingsdk.MainActivity declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity origin=null
+    CALL 'public final fun setOnImageClickListener (listener: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.OnImageClickListener): kotlin.Unit declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk' type=kotlin.Unit origin=null
+      $this: BLOCK type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk origin=FOLDED_ELVIS
+        WHEN type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk origin=FOLDED_ELVIS
+          BRANCH
+            if: COMPOSITE type=kotlin.Boolean origin=null
+              VAR IR_TEMPORARY_VARIABLE name:tmp0 type:com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val]
+                GET_FIELD 'FIELD PROPERTY_BACKING_FIELD name:cubeSdk type:com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? visibility:private' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+                  receiver: GET_VAR '<this>: com.Muthuthiruj.cubeanimatingsdk.MainActivity declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity origin=null
+              CALL 'public final fun not (): kotlin.Boolean [operator] declared in kotlin.Boolean' type=kotlin.Boolean origin=null
+                $this: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=null
+                  arg0: GET_VAR 'val tmp0: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+                  arg1: CONST Null type=kotlin.Nothing? value=null
+            then: GET_VAR 'val tmp0: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+          BRANCH
+            if: CONST Boolean type=kotlin.Boolean value=true
+            then: BLOCK type=kotlin.Unit origin=null
+              CALL 'public final fun throwUninitializedPropertyAccessException (propertyName: kotlin.String): kotlin.Unit declared in kotlin.jvm.internal.Intrinsics' type=kotlin.Unit origin=null
+                propertyName: CONST String type=kotlin.String value="cubeSdk"
+      listener: BLOCK type=com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> origin=OBJECT_LITERAL
+        CLASS CLASS name:<no name provided> modality:FINAL visibility:local superTypes:[com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.OnImageClickListener]
+          $this: VALUE_PARAMETER INSTANCE_RECEIVER name:<this> type:com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>
+          CONSTRUCTOR visibility:public/*package*/ <> (this$0:com.Muthuthiruj.cubeanimatingsdk.MainActivity) returnType:com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> [primary]
+            VALUE_PARAMETER BOUND_RECEIVER_PARAMETER name:this$0 index:0 type:com.Muthuthiruj.cubeanimatingsdk.MainActivity
+            BLOCK_BODY
+              SET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:this$0 type:com.Muthuthiruj.cubeanimatingsdk.MainActivity visibility:public/*package*/ [final] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>' type=kotlin.Unit origin=INITIALIZER_OF_FIELD_FOR_CAPTURED_VALUE
+                receiver: GET_VAR '<this>: com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> origin=null
+                value: GET_VAR 'this$0: com.Muthuthiruj.cubeanimatingsdk.MainActivity declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>.<init>' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity origin=null
+              DELEGATING_CONSTRUCTOR_CALL 'public constructor <init> () [primary] declared in kotlin.Any'
+              BLOCK type=kotlin.Unit origin=null
+          FUN name:onImageClick visibility:public modality:OPEN <> ($this:com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>, index:kotlin.Int, image:kotlin.Any?, allImages:kotlin.collections.List<kotlin.Any>?) returnType:kotlin.Unit
+            overridden:
+              public abstract fun onImageClick (index: kotlin.Int, image: kotlin.Any?, allImages: kotlin.collections.List<kotlin.Any>?): kotlin.Unit declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.OnImageClickListener
+            $this: VALUE_PARAMETER name:<this> type:com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>
+            VALUE_PARAMETER name:index index:0 type:kotlin.Int
+            VALUE_PARAMETER name:image index:1 type:kotlin.Any?
+            VALUE_PARAMETER name:allImages index:2 type:kotlin.collections.List<kotlin.Any>?
+            BLOCK_BODY
+              CALL 'public open fun show (): kotlin.Unit declared in android.widget.Toast' type=kotlin.Unit origin=null
+                $this: CALL 'public open fun makeText (p0: @[FlexibleNullability] android.content.Context?, p1: @[FlexibleNullability] kotlin.CharSequence?, p2: kotlin.Int): @[FlexibleNullability] android.widget.Toast? declared in android.widget.Toast' type=@[FlexibleNullability] android.widget.Toast? origin=null
+                  p0: GET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:this$0 type:com.Muthuthiruj.cubeanimatingsdk.MainActivity visibility:public/*package*/ [final] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity origin=null
+                    receiver: GET_VAR '<this>: com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>.onImageClick' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> origin=null
+                  p1: STRING_CONCATENATION type=kotlin.String
+                    CONST String type=kotlin.String value="Image "
+                    GET_VAR 'index: kotlin.Int declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>.onImageClick' type=kotlin.Int origin=null
+                    CONST String type=kotlin.String value=" tapped"
+                  p2: CONST Int type=kotlin.Int value=0
+          FUN FAKE_OVERRIDE name:equals visibility:public modality:OPEN <> ($this:kotlin.Any, other:kotlin.Any?) returnType:kotlin.Boolean [fake_override,operator]
+            overridden:
+              public open fun equals (other: kotlin.Any?): kotlin.Boolean [fake_override,operator] declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.OnImageClickListener
+            $this: VALUE_PARAMETER name:<this> type:kotlin.Any
+            VALUE_PARAMETER name:other index:0 type:kotlin.Any?
+          FUN FAKE_OVERRIDE name:hashCode visibility:public modality:OPEN <> ($this:kotlin.Any) returnType:kotlin.Int [fake_override]
+            overridden:
+              public open fun hashCode (): kotlin.Int [fake_override] declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.OnImageClickListener
+            $this: VALUE_PARAMETER name:<this> type:kotlin.Any
+          FUN FAKE_OVERRIDE name:toString visibility:public modality:OPEN <> ($this:kotlin.Any) returnType:kotlin.String [fake_override]
+            overridden:
+              public open fun toString (): kotlin.String [fake_override] declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.OnImageClickListener
+            $this: VALUE_PARAMETER name:<this> type:kotlin.Any
+          FIELD FIELD_FOR_CAPTURED_VALUE name:this$0 type:com.Muthuthiruj.cubeanimatingsdk.MainActivity visibility:public/*package*/ [final]
+        BLOCK type=com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> origin=null
+          CONSTRUCTOR_CALL 'public/*package*/ constructor <init> (this$0: com.Muthuthiruj.cubeanimatingsdk.MainActivity) [primary] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided>' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk.<no name provided> origin=OBJECT_LITERAL
+            this$0: GET_VAR '<this>: com.Muthuthiruj.cubeanimatingsdk.MainActivity declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity origin=null
+    CALL 'public final fun startAutoRotation (): kotlin.Unit declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk' type=kotlin.Unit origin=null
+      $this: BLOCK type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk origin=FOLDED_ELVIS
+        WHEN type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk origin=FOLDED_ELVIS
+          BRANCH
+            if: COMPOSITE type=kotlin.Boolean origin=null
+              VAR IR_TEMPORARY_VARIABLE name:tmp0 type:com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val]
+                GET_FIELD 'FIELD PROPERTY_BACKING_FIELD name:cubeSdk type:com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? visibility:private' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+                  receiver: GET_VAR '<this>: com.Muthuthiruj.cubeanimatingsdk.MainActivity declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity origin=null
+              CALL 'public final fun not (): kotlin.Boolean [operator] declared in kotlin.Boolean' type=kotlin.Boolean origin=null
+                $this: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=null
+                  arg0: GET_VAR 'val tmp0: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+                  arg1: CONST Null type=kotlin.Nothing? value=null
+            then: GET_VAR 'val tmp0: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+          BRANCH
+            if: CONST Boolean type=kotlin.Boolean value=true
+            then: BLOCK type=kotlin.Unit origin=null
+              CALL 'public final fun throwUninitializedPropertyAccessException (propertyName: kotlin.String): kotlin.Unit declared in kotlin.jvm.internal.Intrinsics' type=kotlin.Unit origin=null
+                propertyName: CONST String type=kotlin.String value="cubeSdk"
+    CALL 'public final fun setCornerRadius (radius: kotlin.Float): kotlin.Unit declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk' type=kotlin.Unit origin=null
+      $this: BLOCK type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk origin=FOLDED_ELVIS
+        WHEN type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk origin=FOLDED_ELVIS
+          BRANCH
+            if: COMPOSITE type=kotlin.Boolean origin=null
+              VAR IR_TEMPORARY_VARIABLE name:tmp0 type:com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val]
+                GET_FIELD 'FIELD PROPERTY_BACKING_FIELD name:cubeSdk type:com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? visibility:private' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+                  receiver: GET_VAR '<this>: com.Muthuthiruj.cubeanimatingsdk.MainActivity declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity origin=null
+              CALL 'public final fun not (): kotlin.Boolean [operator] declared in kotlin.Boolean' type=kotlin.Boolean origin=null
+                $this: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=null
+                  arg0: GET_VAR 'val tmp0: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+                  arg1: CONST Null type=kotlin.Nothing? value=null
+            then: GET_VAR 'val tmp0: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? [val] declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk? origin=null
+          BRANCH
+            if: CONST Boolean type=kotlin.Boolean value=true
+            then: BLOCK type=kotlin.Unit origin=null
+              CALL 'public final fun throwUninitializedPropertyAccessException (propertyName: kotlin.String): kotlin.Unit declared in kotlin.jvm.internal.Intrinsics' type=kotlin.Unit origin=null
+                propertyName: CONST String type=kotlin.String value="cubeSdk"
+      radius: CONST Float type=kotlin.Float value=20.0
+    COMPOSITE type=kotlin.Unit origin=null
+      CALL 'public open fun d (p0: @[EnhancedNullability] kotlin.String?, p1: @[EnhancedNullability] kotlin.String): kotlin.Int declared in android.util.Log' type=kotlin.Int origin=null
+        p0: CONST String type=kotlin.String value="CubeSDK"
+        p1: CONST String type=kotlin.String value="\uD83C\uDFAF CubeAnimatingSdk setup completed successfully"
+      COMPOSITE type=kotlin.Unit origin=null
+
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate(FunctionCodegen.kt:47)
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate$default(FunctionCodegen.kt:40)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ClassCodegen.generateMethodNode(ClassCodegen.kt:406)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ClassCodegen.generateMethod(ClassCodegen.kt:423)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ClassCodegen.generate(ClassCodegen.kt:168)
+	at org.jetbrains.kotlin.backend.jvm.FileCodegen.lower(JvmPhases.kt:39)
+	at org.jetbrains.kotlin.backend.common.phaser.PhaseFactoriesKt.createFilePhase$lambda$4(PhaseFactories.kt:71)
+	at org.jetbrains.kotlin.backend.common.phaser.PhaseBuildersKt$createSimpleNamedCompilerPhase$1.phaseBody(PhaseBuilders.kt:69)
+	at org.jetbrains.kotlin.backend.common.phaser.SimpleNamedCompilerPhase.phaseBody(CompilerPhase.kt:226)
+	at org.jetbrains.kotlin.backend.common.phaser.AbstractNamedCompilerPhase.invoke(CompilerPhase.kt:113)
+	at org.jetbrains.kotlin.backend.common.phaser.PerformByIrFilePhase.invokeSequential(performByIrFile.kt:62)
+	... 44 more
+Caused by: java.lang.RuntimeException: Exception while generating code for:
+FUN INLINE_LAMBDA name:setupCubeAnimatingSdk$lambda$0 visibility:private modality:FINAL <> ($receiver:com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig, this$0:com.Muthuthiruj.cubeanimatingsdk.MainActivity) returnType:kotlin.Unit
+  $receiver: VALUE_PARAMETER name:$this$apply type:com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig
+  VALUE_PARAMETER BOUND_VALUE_PARAMETER name:this$0 index:0 type:com.Muthuthiruj.cubeanimatingsdk.MainActivity
+  BLOCK_BODY
+    VAR name:$i$a$-apply-MainActivity$setupCubeAnimatingSdk$buttonConfig$1 type:kotlin.Int [val]
+      CONST Int type=kotlin.Int value=0
+    CALL 'public final fun <set-enabled> (value: kotlin.Boolean): kotlin.Unit declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig' type=kotlin.Unit origin=EQ
+      $this: GET_VAR '$this$apply: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk$lambda$0' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig origin=null
+      value: CONST Boolean type=kotlin.Boolean value=true
+    CALL 'public final fun <set-position> (value: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonPosition): kotlin.Unit declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig' type=kotlin.Unit origin=EQ
+      $this: GET_VAR '$this$apply: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk$lambda$0' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig origin=null
+      value: GET_FIELD 'FIELD FIELD_FOR_ENUM_ENTRY name:BOTTOM_END type:com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonPosition visibility:public [final,static] declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonPosition' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonPosition origin=null
+    CALL 'public final fun <set-text> (value: kotlin.String): kotlin.Unit declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig' type=kotlin.Unit origin=EQ
+      $this: GET_VAR '$this$apply: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk$lambda$0' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig origin=null
+      value: CONST String type=kotlin.String value="Get Started"
+    CALL 'public final fun <set-backgroundColor> (value: kotlin.Int): kotlin.Unit declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig' type=kotlin.Unit origin=EQ
+      $this: GET_VAR '$this$apply: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk$lambda$0' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig origin=null
+      value: CALL 'public open fun getColor (p0: @[NonNull] @[FlexibleNullability] android.content.Context?, p1: kotlin.Int): kotlin.Int declared in androidx.core.content.ContextCompat' type=kotlin.Int origin=null
+        p0: GET_VAR 'this$0: com.Muthuthiruj.cubeanimatingsdk.MainActivity declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk$lambda$0' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity origin=null
+        p1: GET_FIELD 'FIELD IR_EXTERNAL_JAVA_DECLARATION_STUB name:white type:kotlin.Int visibility:public [static] declared in com.Muthuthiruj.cubeanimatingsdk.R.color' type=kotlin.Int superQualifierSymbol=com.Muthuthiruj.cubeanimatingsdk.R.color origin=null
+    CALL 'public final fun <set-textColor> (value: kotlin.Int): kotlin.Unit declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig' type=kotlin.Unit origin=EQ
+      $this: GET_VAR '$this$apply: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk$lambda$0' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig origin=null
+      value: CALL 'public open fun getColor (p0: @[NonNull] @[FlexibleNullability] android.content.Context?, p1: kotlin.Int): kotlin.Int declared in androidx.core.content.ContextCompat' type=kotlin.Int origin=null
+        p0: GET_VAR 'this$0: com.Muthuthiruj.cubeanimatingsdk.MainActivity declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk$lambda$0' type=com.Muthuthiruj.cubeanimatingsdk.MainActivity origin=null
+        p1: GET_FIELD 'FIELD IR_EXTERNAL_JAVA_DECLARATION_STUB name:white type:kotlin.Int visibility:public [static] declared in com.Muthuthiruj.cubeanimatingsdk.R.color' type=kotlin.Int superQualifierSymbol=com.Muthuthiruj.cubeanimatingsdk.R.color origin=null
+    CALL 'public final fun <set-textSize> (value: kotlin.Float): kotlin.Unit declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig' type=kotlin.Unit origin=EQ
+      $this: GET_VAR '$this$apply: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk$lambda$0' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig origin=null
+      value: CONST Float type=kotlin.Float value=16.0
+    SET_FIELD 'FIELD IR_EXTERNAL_JAVA_DECLARATION_STUB name:textStyle type:kotlin.Int visibility:public [final,static] declared in android.R.attr' type=kotlin.Unit superQualifierSymbol=android.R.attr origin=EQ
+      value: CONST Int type=kotlin.Int value=1
+    CALL 'public final fun <set-cornerRadius> (value: kotlin.Float): kotlin.Unit declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig' type=kotlin.Unit origin=EQ
+      $this: GET_VAR '$this$apply: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk$lambda$0' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig origin=null
+      value: CONST Float type=kotlin.Float value=12.0
+    CALL 'public final fun <set-padding> (value: kotlin.Int): kotlin.Unit declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig' type=kotlin.Unit origin=EQ
+      $this: GET_VAR '$this$apply: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk$lambda$0' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig origin=null
+      value: CONST Int type=kotlin.Int value=20
+    CALL 'public final fun <set-width> (value: kotlin.Int): kotlin.Unit declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig' type=kotlin.Unit origin=EQ
+      $this: GET_VAR '$this$apply: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk$lambda$0' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig origin=null
+      value: CONST Int type=kotlin.Int value=-2
+    CALL 'public final fun <set-height> (value: kotlin.Int): kotlin.Unit declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig' type=kotlin.Unit origin=EQ
+      $this: GET_VAR '$this$apply: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk$lambda$0' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig origin=null
+      value: CONST Int type=kotlin.Int value=-2
+    CALL 'public final fun <set-visibilityMode> (value: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonVisibility): kotlin.Unit declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig' type=kotlin.Unit origin=EQ
+      $this: GET_VAR '$this$apply: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk$lambda$0' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig origin=null
+      value: GET_FIELD 'FIELD FIELD_FOR_ENUM_ENTRY name:ON_SPECIFIC_INDICES type:com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonVisibility visibility:public [final,static] declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonVisibility' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonVisibility origin=null
+    CALL 'public final fun <set-showOnMain> (value: kotlin.Boolean): kotlin.Unit declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig' type=kotlin.Unit origin=EQ
+      $this: GET_VAR '$this$apply: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk$lambda$0' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig origin=null
+      value: CONST Boolean type=kotlin.Boolean value=true
+    CALL 'public final fun <set-showOnNext> (value: kotlin.Boolean): kotlin.Unit declared in com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig' type=kotlin.Unit origin=EQ
+      $this: GET_VAR '$this$apply: com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig declared in com.Muthuthiruj.cubeanimatingsdk.MainActivity.setupCubeAnimatingSdk$lambda$0' type=com.muthuthiruj.cube_animation_sdk.CubeAnimatingSdk.ButtonConfig origin=null
+      value: CONST Boolean type=kotlin.Boolean value=false
+
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate(FunctionCodegen.kt:47)
+	at org.jetbrains.kotlin.backend.jvm.codegen.IrSourceCompilerForInline.generateLambdaBody(IrSourceCompilerForInline.kt:67)
+	at org.jetbrains.kotlin.codegen.inline.ExpressionLambda.generateLambdaBody(LambdaInfo.kt:72)
+	at org.jetbrains.kotlin.backend.jvm.codegen.IrInlineCodegen.genValueAndPut(IrInlineCodegen.kt:100)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitCall$handleParameter(ExpressionCodegen.kt:616)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitCall(ExpressionCodegen.kt:644)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitCall(ExpressionCodegen.kt:138)
+	at org.jetbrains.kotlin.ir.expressions.IrCall.accept(IrCall.kt:24)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitVariable(ExpressionCodegen.kt:790)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitVariable(ExpressionCodegen.kt:138)
+	at org.jetbrains.kotlin.ir.declarations.IrVariable.accept(IrVariable.kt:36)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitStatementContainer(ExpressionCodegen.kt:579)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlockBody(ExpressionCodegen.kt:584)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlockBody(ExpressionCodegen.kt:138)
+	at org.jetbrains.kotlin.ir.expressions.IrBlockBody.accept(IrBlockBody.kt:20)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.generate(ExpressionCodegen.kt:240)
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.doGenerate(FunctionCodegen.kt:123)
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate(FunctionCodegen.kt:44)
+	... 54 more
+Caused by: java.lang.AssertionError: access of const val: SET_FIELD 'FIELD IR_EXTERNAL_JAVA_DECLARATION_STUB name:textStyle type:kotlin.Int visibility:public [final,static] declared in android.R.attr' type=kotlin.Unit superQualifierSymbol=android.R.attr origin=EQ
+  value: CONST Int type=kotlin.Int value=1
+
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitFieldAccess(ExpressionCodegen.kt:861)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitFieldAccess(ExpressionCodegen.kt:138)
+	at org.jetbrains.kotlin.ir.visitors.IrElementVisitor$DefaultImpls.visitSetField(IrElementVisitor.kt:206)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitSetField(ExpressionCodegen.kt:908)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitSetField(ExpressionCodegen.kt:138)
+	at org.jetbrains.kotlin.ir.expressions.IrSetField.accept(IrSetField.kt:21)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitStatementContainer(ExpressionCodegen.kt:579)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlockBody(ExpressionCodegen.kt:584)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlockBody(ExpressionCodegen.kt:138)
+	at org.jetbrains.kotlin.ir.expressions.IrBlockBody.accept(IrBlockBody.kt:20)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.generate(ExpressionCodegen.kt:240)
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.doGenerate(FunctionCodegen.kt:123)
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate(FunctionCodegen.kt:44)
+	... 71 more
+
+
