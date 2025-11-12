@@ -20,12 +20,13 @@ Event Listeners - Comprehensive callback system
 
 🚀Quick Start
 ---
-1. Add Dependency
+1. Add Dependency - v1.0.0
 ---
 Add the SDK to your build.gradle:
+
 gradle
 dependencies {
-    implementation("com.github.Muthuthiruj:CubeAnimateDynamicImage:v1.0.0")
+   implementation("com.github.Muthuthiruj:CubeAnimateDynamicImage:v1.0.0")
 }
 
 2. Add to Layout
