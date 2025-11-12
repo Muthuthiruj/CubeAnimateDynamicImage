@@ -1,6 +1,6 @@
 🎯 **Cube Animation SDK**
 A powerful and customizable Android SDK for creating stunning 3D cube animation effects with images, buttons, and text overlays. Perfect for onboarding screens, image galleries, and interactive content displays.
-
+---
 ✨ **Features**
 3D Cube Animations - Smooth left/right cube flip transitions
 
@@ -15,7 +15,7 @@ Fully Customizable - Colors, positions, sizes, and animations
 Image Support - Load from resources or URLs (with Glide)
 
 Event Listeners - Comprehensive callback system.
-
+---
 🚀** Quick Start**
 **1. Add Dependency**
 Add the SDK to your build.gradle:
