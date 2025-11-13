@@ -324,17 +324,85 @@ class CubeAnimatingSdk @JvmOverloads constructor(
         binding.mainImageView.scaleType = ImageView.ScaleType.CENTER_CROP
         binding.nextImageView.scaleType = ImageView.ScaleType.CENTER_CROP
 
-        setupGestureDetector()
-        setupTouchListeners()
-
         handleAttributes(attrs)
 
         applyCornerRadius()
 
         applyButtonConfigurations()
         applyGreetingConfigurations()
-        updateButtonAndTextVisibility()
+
+        // 🌟 FIX: Remove post{} - Set up button and text immediately
+        setupButtonClickListeners()
+
+        // 🌟 FORCE initial visibility
+        updateButtonAndTextVisibilityImmediately()
     }
+
+    private fun updateButtonAndTextVisibilityImmediately() {
+        updateMainButtonAndTextVisibilityImmediately()
+        updateNextButtonAndTextVisibilityImmediately()
+    }
+
+    private fun updateMainButtonAndTextVisibilityImmediately() {
+        // Button visibility
+        val shouldShowButton = when (buttonConfig.visibilityMode) {
+            ButtonVisibility.ALWAYS -> buttonConfig.enabled && buttonConfig.showOnMain
+            ButtonVisibility.ON_FIRST_IMAGE -> buttonConfig.enabled && buttonConfig.showOnMain && currentImageIndex == 0
+            ButtonVisibility.ON_LAST_IMAGE -> buttonConfig.enabled && buttonConfig.showOnMain && currentImageIndex == getImageCount() - 1
+            ButtonVisibility.ON_SPECIFIC_INDICES -> buttonConfig.enabled && buttonConfig.showOnMain && buttonOnIndices.contains(currentImageIndex)
+            ButtonVisibility.NEVER -> false
+        }
+
+        binding.mainActionButton.visibility = if (shouldShowButton) VISIBLE else INVISIBLE
+
+        // Greeting visibility
+        val shouldShowGreeting = greetingConfig.showOnMain &&
+                (greetingOnIndices.isEmpty() || greetingOnIndices.contains(currentImageIndex))
+
+        binding.mainGreetingText.visibility = if (shouldShowGreeting) VISIBLE else INVISIBLE
+
+        // 🌟 Update greeting text based on current index
+        if (shouldShowGreeting) {
+            val customText = greetingTexts[currentImageIndex]
+            binding.mainGreetingText.text = customText ?: greetingConfig.text
+        }
+
+        // 🌟 FORCE layout update
+        binding.mainActionButton.requestLayout()
+        binding.mainGreetingText.requestLayout()
+    }
+
+    private fun updateNextButtonAndTextVisibilityImmediately() {
+        val nextIndex = if (currentImageIndex < getImageCount() - 1) currentImageIndex + 1 else 0
+
+        // Button visibility for next container
+        val shouldShowButton = when (buttonConfig.visibilityMode) {
+            ButtonVisibility.ALWAYS -> buttonConfig.enabled && buttonConfig.showOnNext
+            ButtonVisibility.ON_FIRST_IMAGE -> buttonConfig.enabled && buttonConfig.showOnNext && nextIndex == 0
+            ButtonVisibility.ON_LAST_IMAGE -> buttonConfig.enabled && buttonConfig.showOnNext && nextIndex == getImageCount() - 1
+            ButtonVisibility.ON_SPECIFIC_INDICES -> buttonConfig.enabled && buttonConfig.showOnNext && buttonOnIndices.contains(nextIndex)
+            ButtonVisibility.NEVER -> false
+        }
+
+        binding.nextActionButton.visibility = if (shouldShowButton) VISIBLE else INVISIBLE
+
+        // Greeting visibility for next container
+        val shouldShowGreeting = greetingConfig.showOnNext &&
+                (greetingOnIndices.isEmpty() || greetingOnIndices.contains(nextIndex))
+
+        binding.nextGreetingText.visibility = if (shouldShowGreeting) VISIBLE else INVISIBLE
+
+        // 🌟 Update greeting text for next container
+        if (shouldShowGreeting) {
+            val customText = greetingTexts[nextIndex]
+            binding.nextGreetingText.text = customText ?: greetingConfig.text
+        }
+
+        // 🌟 FORCE layout update
+        binding.nextActionButton.requestLayout()
+        binding.nextGreetingText.requestLayout()
+    }
+
     private fun handleAttributes(attrs: AttributeSet?) {
         attrs?.let {
             val typedArray = context.obtainStyledAttributes(
@@ -899,7 +967,13 @@ class CubeAnimatingSdk @JvmOverloads constructor(
         imageResources.addAll(resources)
         imageUrls.clear()
         currentImageIndex = 0
+
+        // 🌟 Load image and update visibility immediately
         loadCurrentImage()
+
+        // 🌟 Force update next container visibility too
+        updateNextButtonAndTextVisibilityImmediately()
+
         startAutoRotationIfEnabled()
     }
 
@@ -1046,8 +1120,8 @@ class CubeAnimatingSdk @JvmOverloads constructor(
                 onImageLoadListener?.onImageLoad(currentImageIndex, imageResources[currentImageIndex])
             }
 
-            // 🌟 Ensure button and text visibility is updated when image loads
-            updateMainButtonAndTextVisibility()
+            // 🌟 FIX: Use immediate visibility update (no post{})
+            updateMainButtonAndTextVisibilityImmediately()
 
         } catch (e: Exception) {
             Log.e("CubeSDK", "Error loading current image: ${e.message}")
@@ -1211,72 +1285,26 @@ class CubeAnimatingSdk @JvmOverloads constructor(
     }
     private fun onSwipeLeft() {
         val currentTime = System.currentTimeMillis()
-        if (currentTime - lastSwipeTime < SWIPE_DEBOUNCE_DELAY || isAnimating) {
-            Log.d("CubeSDK", "Swipe ignored - too fast or animating")
-            return
-        }
+        if (currentTime - lastSwipeTime < SWIPE_DEBOUNCE_DELAY || isAnimating) return
         lastSwipeTime = currentTime
 
-        // 1. Always stop the auto-rotation timer immediately
         autoRotationHandler.removeCallbacks(autoRotationRunnable)
 
-        val nextIndex: Int
-        val direction = CubeAnimation.DIRECTION_LEFT // Left swipe is forward motion
-
-        if (currentImageIndex < getImageCount() - 1) {
-            // Normal move: Set sequence forward and start animation
-            nextIndex = currentImageIndex + 1
-            isForwardSequence = true
-        } else if (config.loopImages) {
-            // Looping wrap: Set sequence forward and start animation
-            nextIndex = 0
-            isForwardSequence = true // Ensure sequence is forward after loop
-        } else {
-            // Not looping, at last index: Prevent animation and reverse sequence for next time
-            isForwardSequence = false
-            Log.d("CubeSDK", "Swipe ignored - at last index, sequence switched to backward.")
-            // Manually restart the timer since startAnimation() was skipped
-            autoRotationHandler.postDelayed(autoRotationRunnable, config.rotationInterval)
-            return
-        }
-
-        // 2. Start animation (auto-rotation restart is handled by onAnimationEnd)
-        startAnimation(nextIndex, direction)
+        val nextIndex = if (currentImageIndex < getImageCount() - 1) currentImageIndex + 1 else 0
+        isForwardSequence = true // Swipe left = forward direction
+        startAnimation(nextIndex, CubeAnimation.DIRECTION_LEFT)
     }
 
     private fun onSwipeRight() {
         val currentTime = System.currentTimeMillis()
-        if (currentTime - lastSwipeTime < SWIPE_DEBOUNCE_DELAY || isAnimating) {
-            Log.d("CubeSDK", "Swipe ignored - too fast or animating")
-            return
-        }
+        if (currentTime - lastSwipeTime < SWIPE_DEBOUNCE_DELAY || isAnimating) return
         lastSwipeTime = currentTime
 
-        // 1. Always stop the auto-rotation timer immediately
         autoRotationHandler.removeCallbacks(autoRotationRunnable)
 
-        val prevIndex: Int
-        val direction = CubeAnimation.DIRECTION_RIGHT // Right swipe is backward motion
-
-        if (currentImageIndex > 0) {
-            // Normal move: Set sequence backward and start animation
-            prevIndex = currentImageIndex - 1
-            isForwardSequence = false
-        } else if (config.loopImages) {
-            // Looping wrap: Set sequence backward and start animation
-            prevIndex = getImageCount() - 1
-            isForwardSequence = false
-        } else {
-            // Not looping, at first index: Prevent animation and reverse sequence for next time
-            isForwardSequence = true
-            Log.d("CubeSDK", "Swipe ignored - at first index, sequence switched to forward.")
-            // Manually restart the timer since startAnimation() was skipped
-            autoRotationHandler.postDelayed(autoRotationRunnable, config.rotationInterval)
-            return
-        }
-
-        // 2. Start animation (auto-rotation restart is handled by onAnimationEnd)
-        startAnimation(prevIndex, direction)
+        val prevIndex = if (currentImageIndex > 0) currentImageIndex - 1 else getImageCount() - 1
+        isForwardSequence = false // Swipe right = backward direction
+        startAnimation(prevIndex, CubeAnimation.DIRECTION_RIGHT)
     }
 
     private fun animateToNext() {
@@ -1301,20 +1329,20 @@ class CubeAnimatingSdk @JvmOverloads constructor(
     private fun onAutoSlide() {
         if (isForwardSequence) {
             if (currentImageIndex < getImageCount() - 1) {
-                // Forward direction: left to right animation
+                // Forward: left to right animation
                 startAnimation(currentImageIndex + 1, CubeAnimation.DIRECTION_LEFT)
             } else {
+                // End reached, switch to backward
                 isForwardSequence = false
-                // Switch to backward direction: right to left animation
                 startAnimation(currentImageIndex - 1, CubeAnimation.DIRECTION_RIGHT)
             }
         } else {
             if (currentImageIndex > 0) {
-                // Backward direction: right to left animation
+                // Backward: right to left animation
                 startAnimation(currentImageIndex - 1, CubeAnimation.DIRECTION_RIGHT)
             } else {
+                // Beginning reached, switch to forward
                 isForwardSequence = true
-                // Switch to forward direction: left to right animation
                 startAnimation(currentImageIndex + 1, CubeAnimation.DIRECTION_LEFT)
             }
         }
@@ -1330,32 +1358,8 @@ class CubeAnimatingSdk @JvmOverloads constructor(
         binding.mainContentContainer.clearAnimation()
         binding.nextContentContainer.clearAnimation()
 
-
-
-        // Set up the next image in nextImageView
-        try {
-            if (imageUrls.isNotEmpty()) {
-                loadImageWithGlide(binding.nextImageView, imageUrls[newIndex])
-            } else {
-                binding.nextImageView.setImageResource(imageResources[newIndex])
-            }
-        } catch (e: Exception) {
-            Log.e("CubeSDK", "❌ Error loading next image: ${e.message}")
-            onImageErrorListener?.onImageError(newIndex, getImageAt(newIndex), e)
-            isAnimating = false
-            restartAutoRotation()
-            return
-        }
-
-        // 🌟 CRITICAL FIX: Update button and text visibility for NEXT container BEFORE animation starts
-        updateNextButtonAndTextVisibilityForIndex(newIndex)
-
-        // Make next container visible
-        binding.nextContentContainer.visibility = VISIBLE
-        binding.nextImageView.visibility = VISIBLE
-
-        // 🌟 Also ensure main container button/text visibility is correct
-        updateMainButtonAndTextVisibility()
+        // 🌟 STEP 1: Prepare the NEXT container COMPLETELY before animation
+        prepareNextContainerForAnimation(newIndex)
 
         // Create and initialize animations
         val outAnimation = CubeAnimation.create(direction, false, config.animationDuration)
@@ -1376,40 +1380,11 @@ class CubeAnimatingSdk @JvmOverloads constructor(
 
         outAnimation.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(animation: Animation) {
-                Log.d("CubeSDK", "▶️ Animation started")
+                Log.d("CubeSDK", "▶️ Animation started - Both containers ready")
             }
 
             override fun onAnimationEnd(animation: Animation) {
-                Log.d("CubeSDK", "⏹️ Animation ended, swapping containers")
-
-                // Swap the image drawables between main and next ImageViews
-                if (imageUrls.isNotEmpty()) {
-                    val mainDrawable = binding.mainImageView.drawable
-                    val nextDrawable = binding.nextImageView.drawable
-                    binding.mainImageView.setImageDrawable(nextDrawable)
-                    binding.nextImageView.setImageDrawable(mainDrawable)
-                } else {
-                    binding.mainImageView.setImageResource(imageResources[newIndex])
-                }
-
-                // Update current index FIRST
-                currentImageIndex = newIndex
-
-                // 🌟 CRITICAL: Update button and text visibility for the NEW current index
-                updateMainButtonAndTextVisibility()
-
-                binding.mainContentContainer.visibility = VISIBLE
-                binding.nextContentContainer.visibility = INVISIBLE
-
-                isAnimating = false
-
-                Log.d("CubeSDK", "✅ Animation complete. Current index: $currentImageIndex, Forward sequence: $isForwardSequence")
-
-                // Notify listener
-                onAnimationCompleteListener?.onAnimationComplete(currentImageIndex)
-
-                // Restart auto-rotation after animation completes
-                restartAutoRotation()
+                handleAnimationCompletion(newIndex)
             }
 
             override fun onAnimationRepeat(animation: Animation) {
@@ -1422,14 +1397,62 @@ class CubeAnimatingSdk @JvmOverloads constructor(
         binding.nextContentContainer.startAnimation(inAnimation)
     }
 
-    /**
-     * 🌟 Update next container button and text visibility for a specific index
-     * This ensures the next container shows the correct button/text during animation
-     */
-    /**
-     * 🌟 Update next container button and text visibility for a specific index
-     * This ensures the next container shows the correct button/text during animation
-     */
+    private fun prepareNextContainerForAnimation(newIndex: Int) {
+        // Set up the next image in nextImageView
+        try {
+            if (imageUrls.isNotEmpty()) {
+                loadImageWithGlide(binding.nextImageView, imageUrls[newIndex])
+            } else {
+                binding.nextImageView.setImageResource(imageResources[newIndex])
+            }
+        } catch (e: Exception) {
+            Log.e("CubeSDK", "❌ Error loading next image: ${e.message}")
+            onImageErrorListener?.onImageError(newIndex, getImageAt(newIndex), e)
+            isAnimating = false
+            restartAutoRotation()
+            return
+        }
+
+        // 🌟 CRITICAL: Make next container COMPLETELY ready with button/text
+        binding.nextContentContainer.visibility = VISIBLE
+        binding.nextImageView.visibility = VISIBLE
+
+        // 🌟 Update next container button and text visibility IMMEDIATELY
+        updateNextButtonAndTextVisibilityForIndex(newIndex)
+
+        Log.d("CubeSDK", "🔄 Next container prepared for index: $newIndex")
+    }
+
+    private fun handleAnimationCompletion(newIndex: Int) {
+        Log.d("CubeSDK", "⏹️ Animation ended, finalizing display")
+
+        // Update current index
+        currentImageIndex = newIndex
+
+        // For resource images, ensure main image view has the correct image
+        if (imageResources.isNotEmpty()) {
+            binding.mainImageView.setImageResource(imageResources[newIndex])
+        }
+        // For URLs, Glide already handled the image loading
+
+        // Reset container visibility
+        binding.mainContentContainer.visibility = VISIBLE
+        binding.nextContentContainer.visibility = INVISIBLE
+
+        // 🌟 Update main container with new button/text IMMEDIATELY
+        updateMainButtonAndTextVisibilityImmediately()
+
+        isAnimating = false
+
+        Log.d("CubeSDK", "✅ Animation complete. Now showing index: $currentImageIndex")
+
+        // Notify listener
+        onAnimationCompleteListener?.onAnimationComplete(currentImageIndex)
+
+        // Restart auto-rotation
+        restartAutoRotation()
+    }
+
     private fun updateNextButtonAndTextVisibilityForIndex(index: Int) {
         // Button visibility for next container
         val shouldShowButton = when (buttonConfig.visibilityMode) {
@@ -1454,7 +1477,11 @@ class CubeAnimatingSdk @JvmOverloads constructor(
             binding.nextGreetingText.text = customText ?: greetingConfig.text
         }
 
-        Log.d("CubeSDK", "🔄 Next container visibility for index $index - Button: $shouldShowButton, Greeting: $shouldShowGreeting, Text: ${greetingTexts[index] ?: greetingConfig.text}")
+        // 🌟 FORCE layout update
+        binding.nextActionButton.requestLayout()
+        binding.nextGreetingText.requestLayout()
+
+        Log.d("CubeSDK", "🔄 Next container visibility for index $index - Button: $shouldShowButton, Greeting: $shouldShowGreeting")
     }
 
     private fun getImageAt(index: Int): Any? {

@@ -22,7 +22,7 @@
         app:mainImage="@drawable/mountain3"
         app:nextImage="@drawable/mountain4"
         app:loginButtonText="Sign In"
-        app:cubeCornerRadius="20dp"
+        app:cubeCornerRadius="5dp"
         android:background="@android:color/transparent"
         app:buttonColor="@color/black"
         app:greetingText="Welcome Back!"

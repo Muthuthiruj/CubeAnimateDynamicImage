@@ -22,15 +22,16 @@ class MainActivity : AppCompatActivity() {
         cubeSdk = findViewById(R.id.cubeSdk)
 
         // ✅ Wait for the view to be fully laid out before setup
-        cubeSdk.post {
             setupCubeAnimatingSdk()
-        }
     }
 
     private fun setupCubeAnimatingSdk() {
         Log.d("CubeSDK", "🚀 Starting SDK configuration...")
 
-        // ✅ Step 1: Load images first
+        // ✅ Step 1: Configure UI elements FIRST
+        setupUIElements()
+
+        // ✅ Step 2: Load images AFTER configuration
         cubeSdk.loadImagesFromResources(listOf(
             R.drawable.mountain1,
             R.drawable.mountain2,
@@ -40,27 +41,21 @@ class MainActivity : AppCompatActivity() {
             R.drawable.mountain5
         ))
 
-        // ✅ Step 2: Basic configuration
+        // ✅ Step 3: Basic configuration
         cubeSdk.setRotationInterval(3000)
         cubeSdk.setAnimationDuration(1500)
         cubeSdk.setSwipeEnabled(true)
         cubeSdk.setImageCaching(true)
         cubeSdk.setImageScaleType(ImageView.ScaleType.FIT_XY)
         cubeSdk.setImageSetName("Mountain Images")
-        /*cubeSdk.setCornerRadius(20f)*/
-
-
-        // ✅ Step 3: Configure UI elements (Buttons & Text)
-        setupUIElements()
 
         // ✅ Step 4: Set up listeners
         setupEventListeners()
 
-        // ✅ Step 5: Start rotation AFTER everything is configured
-        Handler(Looper.getMainLooper()).postDelayed({
-            cubeSdk.startAutoRotation()
-            Log.d("CubeSDK", "🎯 CubeAnimatingSdk setup completed successfully - Auto rotation started")
-        }, 100) // Small delay to ensure everything is bound
+        // ✅ Step 5: Start rotation
+        cubeSdk.startAutoRotation()
+
+        Log.d("CubeSDK", "🎯 CubeAnimatingSdk setup completed successfully")
     }
 
     private fun setupUIElements() {
@@ -70,7 +65,7 @@ class MainActivity : AppCompatActivity() {
         val buttonConfig = CubeAnimatingSdk.ButtonConfig().apply {
             enabled = true
             position = CubeAnimatingSdk.ButtonPosition.BOTTOM_END
-            text = "Get Started"
+            text = "smile"
             backgroundColor = ContextCompat.getColor(this@MainActivity, R.color.white)
             textColor = ContextCompat.getColor(this@MainActivity, R.color.black)
             textSize = 16f
@@ -82,8 +77,10 @@ class MainActivity : AppCompatActivity() {
             height = RelativeLayout.LayoutParams.WRAP_CONTENT
             visibilityMode = CubeAnimatingSdk.ButtonVisibility.ON_SPECIFIC_INDICES
             showOnMain = true
-            showOnNext = false
+            showOnNext = true
         }
+
+
 
         cubeSdk.setButtonConfig(buttonConfig)
         cubeSdk.setButtonOnIndices(0, 2, 4)
