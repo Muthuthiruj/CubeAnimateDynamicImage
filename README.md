@@ -2,8 +2,8 @@
 ---
 A powerful and customizable Android SDK for creating stunning 3D cube animation effects with images, buttons, and text overlays. Perfect for onboarding screens, image galleries, and interactive content displays.
 
-🚀 What’s New in v1.0.11
-______
+🚀 What’s New in v1.0.12
+-------
 v1.0.12: Fixed button/text visibility timing - now appears instantly with images instead of after animation. Enhanced animation synchronization and Fragment compatibility.
 
 🚀 What’s New in v1.0.11
