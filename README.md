@@ -2,6 +2,11 @@
 ---
 A powerful and customizable Android SDK for creating stunning 3D cube animation effects with images, buttons, and text overlays. Perfect for onboarding screens, image galleries, and interactive content displays.
 
+🚀 What’s New in v1.0.11
+------------
+<span style="font-size: 12px;">v1.0.11: Added dynamic per-image greeting texts with XML support, improved animation synchronization, and better button/text coordination.</span>
+------------
+
 ✨ **Features**
 ---
 3D Cube Animations - Smooth left/right cube flip transitions
@@ -18,13 +23,29 @@ Image Support - Load from resources or URLs (with Glide)
 
 Event Listeners - Comprehensive callback system
 
+📦 Installation
+---
+Add JitPack Repository
+Add the JitPack repository to your root build.gradle:
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+}
+
 🚀Quick Start
 ---
 1. Add Dependency - v1.0.0
 ---
+Jetpack Compose Support (since v1.0.11)
+---
 Add the SDK to your build.gradle:
 
 gradle
+
 dependencies {
    implementation("com.github.Muthuthiruj:CubeAnimateDynamicImage:v1.0.0")
 }
