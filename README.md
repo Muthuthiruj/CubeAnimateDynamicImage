@@ -32,6 +32,7 @@ Add JitPack Repository
 Add the JitPack repository to your root build.gradle:
 
 
+```gradle
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -39,6 +40,7 @@ dependencyResolutionManagement {
         maven { url 'https://jitpack.io' }
     }
 }
+-------
 🚀Quick Start
 ---
 1. Add Dependency - v1.0.0
