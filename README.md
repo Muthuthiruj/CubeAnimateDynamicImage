@@ -31,7 +31,7 @@ Event Listeners - Comprehensive callback system
 Add JitPack Repository
 Add the JitPack repository to your root build.gradle:
 
-```gradle
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
