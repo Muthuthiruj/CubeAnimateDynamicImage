@@ -8,8 +8,7 @@ v1.0.12: Fixed button/text visibility timing - now appears instantly with images
 
 🚀 What’s New in v1.0.11
 ------------
-<span style="font-size: 12px;">v1.0.11: Added dynamic per-image greeting texts with XML support, improved animation synchronization, and better button/text coordination.</span>
-------------
+v1.0.11: Added dynamic per-image greeting texts with XML support, improved animation synchronization, and better button/text coordination.
 
 ✨ **Features**
 ---
