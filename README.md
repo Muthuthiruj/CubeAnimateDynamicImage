@@ -41,7 +41,7 @@ dependencyResolutionManagement {
         maven { url = uri("[https://jitpack.io](https://jitpack.io)") }
     }
 }
--------
+
 🚀Quick Start
 ---
 1. Add Dependency - v1.0.0
