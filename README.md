@@ -1,7 +1,8 @@
 🎯Cube Animation SDK
 
-![Cube Animation Demo](screenshots/Pause GIF shared image.gif)
-
+<p align="center">
+  <img src="Pause GIF shared image.gif" width="300" alt="Cube Animation Preview">
+</p>
 ---
 A powerful and customizable Android SDK for creating stunning 3D cube animation effects with images, buttons, and text overlays. Perfect for onboarding screens, image galleries, and interactive content displays.
 
